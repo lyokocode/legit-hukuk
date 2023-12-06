@@ -13,13 +13,13 @@
     outline: none;
     border: none;
     text-decoration: none;
+    list-style: none;
 }
 
 html,
 body {
-    list-style: none;
     width: 100vw;
-    min-height: 200vh;
+    min-height: 100vh;
     overflow-x: hidden;
     font-family: Georgia, sans-serif;
 }
@@ -33,4 +33,9 @@ body {
 
 button {
     cursor: pointer;
+    background-color: inherit;
+}
+
+a {
+    color: inherit;
 }
