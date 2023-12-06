@@ -1,4 +1,4 @@
-import { Hero, Detail } from "~/components"
+import { Hero, Detail } from "@/components"
 import "./blogs.scss"
 
 export const Blogs = () => {

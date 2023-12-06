@@ -6,4 +6,8 @@ export { Detail } from "./Detail"
 
 export { Card } from "./Card"
 
+export { LawyerCard } from "./LawyerCard"
+
+export { LawyerAbout } from "./LawyerAbout"
+
 export { Footer } from "./Footer"

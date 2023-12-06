@@ -1,4 +1,4 @@
-import { Detail, Hero, Card } from "~/components/"
+import { Detail, Hero, Card } from "@/components/"
 
 import "./home.scss"
 

@@ -1,4 +1,4 @@
-import { cards } from "~/mockData/data"
+import { cards } from "@/mockData/data"
 import "./card.scss"
 export const Card = () => {
     return (
