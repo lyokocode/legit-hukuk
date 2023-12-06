@@ -1,8 +1,9 @@
 export const navigations = [
+
     {
         id: "1",
-        link: "/",
-        title: "Anasayfa"
+        link: "/ekibimiz",
+        title: "Ekibimiz"
     },
     {
         id: "2",
