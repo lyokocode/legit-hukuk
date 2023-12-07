@@ -1,7 +1,14 @@
+// middlewares
 import express from "express"
 import dotenv from "dotenv"
 import cors from "cors"
+
+// connection
 import { sequelize } from "./database/db.js"
+
+// route
+import userRoute from "./routes/user.js"
+
 
 const app = express()
 

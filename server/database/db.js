@@ -1,6 +1,18 @@
-import Sequelize from "sequelize"
+// import Sequelize from "sequelize"
 
-export const sequelize = new Sequelize('legithukuk', 'postgres', 'aelita', {
-    host: 'localhost',
-    dialect: 'postgres'
+// export const sequelize = new Sequelize('legithukuk', 'postgres', 'aelita', {
+//     host: 'localhost',
+//     dialect: 'postgres'
+// })
+
+import Sequelize from "sequelize"
+import pg from 'pg';
+import dotenv from "dotenv"
+
+dotenv.config()
+
+export const sequelize = new Sequelize(process.env.SUPABASE_DB_NAME, process.env.SUPABASE_DB_OWNER, process.env.SUPABASE_PASSWORD, {
+    host: process.env.SUPABASE_HOST,
+    dialect: 'postgres',
+    dialectModule: pg
 })
