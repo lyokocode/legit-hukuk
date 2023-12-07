@@ -11,6 +11,7 @@ import { sequelize } from "./database/db.js"
 // routes
 import userRoute from "./routes/user.js"
 import authRoute from "./routes/auth.js"
+import categoryRoute from "./routes/category.js"
 
 
 // middlewares
@@ -26,6 +27,8 @@ app.use(cookieParser())
 // functions
 app.use("/api/users", userRoute)
 app.use("/api/auth", authRoute)
+app.use("/api/categories", categoryRoute)
+
 
 app.use("/", (req, res) => {
     res.send("server is running")
