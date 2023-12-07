@@ -59,8 +59,8 @@ export const register = async (req, res, next) => {
             about: aboutUrl,
             password: hash,
             isAdmin: req.body.isAdmin,
-            links: req.body.links,
-
+            linkedin: req.body.linkedin,
+            twitter: req.body.twitter,
         });
         return res.status(201).json(newUser);
 

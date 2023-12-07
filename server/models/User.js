@@ -52,8 +52,12 @@ export const User = sequelize.define('User', {
         type: DataTypes.BOOLEAN,
         default: false
     },
-    links: {
-        type: DataTypes.ARRAY(DataTypes.STRING),
-        defaultValue: [],
+    linkedin: {
+        type: DataTypes.STRING,
+        allowNull: false,
+    },
+    twitter: {
+        type: DataTypes.STRING,
+        allowNull: false,
     },
 });

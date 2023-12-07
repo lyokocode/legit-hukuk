@@ -14,6 +14,24 @@ export const getAllCategories = async (req, res, next) => {
     }
 }
 
+// GET CATEGORY
+export const getCategory = async (req, res, next) => {
+    const { slug } = req.query;
+
+    try {
+        const category = await Category.findOne({
+            where: { slug }
+        })
+        if (!category) {
+            return next(createError(404, " category is not defined"))
+
+        }
+        res.json(category);
+    } catch (err) {
+        next(err)
+    }
+}
+
 // CREATE NEW CATEGORY
 export const createCategory = async (req, res, next) => {
     const imagePath = req.files && req.files.image;

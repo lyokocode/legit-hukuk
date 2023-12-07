@@ -12,6 +12,7 @@ import { sequelize } from "./database/db.js"
 import userRoute from "./routes/user.js"
 import authRoute from "./routes/auth.js"
 import categoryRoute from "./routes/category.js"
+import blogRoute from "./routes/blog.js"
 
 
 // middlewares
@@ -28,6 +29,7 @@ app.use(cookieParser())
 app.use("/api/users", userRoute)
 app.use("/api/auth", authRoute)
 app.use("/api/categories", categoryRoute)
+app.use("/api/blogs", blogRoute)
 
 
 app.use("/", (req, res) => {
@@ -45,11 +47,10 @@ app.use((err, req, res, next) => {
     })
 })
 
-
 async function main() {
     try {
         await sequelize.sync(
-            { force: true }
+            // { force: true }
         );
         console.log("db connection is successfull")
         app.listen(process.env.PORT, () => console.log(`api is running on port: ${process.env.PORT}`))
