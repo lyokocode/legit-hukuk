@@ -6,12 +6,19 @@ import cors from "cors"
 // connection
 import { sequelize } from "./database/db.js"
 
+// routes
+import userRoute from "./routes/user.js"
 
-const app = express()
 
 // middlewares
+const app = express()
+
 dotenv.config()
 app.use(cors())
+
+
+// functions
+app.use("/api/users", userRoute)
 
 app.use("/", (req, res) => {
     res.send("server is running")
