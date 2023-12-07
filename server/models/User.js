@@ -1,10 +1,21 @@
 import { DataTypes } from "sequelize";
 import { sequelize } from "../database/db.js";
+import slugify from 'slugify';
 
 export const User = sequelize.define('User', {
+    slug: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        unique: true,
+    },
+
     fullName: {
         type: DataTypes.STRING,
         allowNull: false,
+        set(value) {
+            this.setDataValue('fullName', value);
+            this.setDataValue('slug', slugify(value, { lower: true }));
+        },
     },
     userName: {
         type: DataTypes.STRING,
@@ -24,10 +35,7 @@ export const User = sequelize.define('User', {
         type: DataTypes.STRING,
         allowNull: false,
     },
-    links: {
-        type: DataTypes.ARRAY(DataTypes.STRING),
-        defaultValue: [],
-    },
+
     about: {
         type: DataTypes.STRING,
         allowNull: true,
@@ -43,5 +51,9 @@ export const User = sequelize.define('User', {
     isAdmin: {
         type: DataTypes.BOOLEAN,
         default: false
+    },
+    links: {
+        type: DataTypes.ARRAY(DataTypes.STRING),
+        defaultValue: [],
     },
 });
