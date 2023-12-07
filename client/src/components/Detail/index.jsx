@@ -1,11 +1,18 @@
 import "./detail.scss"
 import PropTypes from "prop-types";
 
-export const Detail = ({ title = "2023 | İzmir", description = "Legit Hukuk & Danışmanlık" }) => {
+export const Detail = ({ title = "2023 | İzmir", description = "Legit Hukuk & Danışmanlık", img = "./law1.png" }) => {
+    console.log(img)
     return (
         <article className="detail">
             <div className="info">
-                <div className="hr" />
+                {
+                    img ? (
+                        <img className="detailImage" src={img} alt="hero image" />
+                    ) : (
+                        <div className="hr" />
+                    )
+                }
                 {title}
                 <div className="hr" />
             </div>
@@ -18,5 +25,6 @@ export const Detail = ({ title = "2023 | İzmir", description = "Legit Hukuk & D
 
 Detail.propTypes = {
     description: PropTypes.string,
+    img: PropTypes.string,
     title: PropTypes.string,
 };

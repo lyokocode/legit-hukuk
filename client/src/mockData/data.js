@@ -47,28 +47,32 @@ export const workData = [
         title: "Ticaret Hukuku",
         icon: "/icon1.png",
         description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley",
-        image: "/calisma1.png"
+        image: "/calisma1.png",
+        slug: "ticaret-hukuku",
     },
     {
         id: 2,
         title: "İş Hukuku",
         icon: "/icon2.png",
         description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley",
-        image: "/calisma2.png"
+        image: "/calisma2.png",
+        slug: "is-hukuku",
+
     },
     {
         id: 3,
         title: "Gayrimenkul Hukuku",
         icon: "/icon3.png",
         description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley",
-        image: "/calisma3.png"
+        image: "/calisma3.png",
+        slug: "gayrimenkul-hukuku",
     },
     {
         id: 4,
         title: "Aile Hukuku",
         icon: "/icon4.png",
         description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley",
-        image: "/calisma4.png"
+        image: "/calisma4.png",
+        slug: "aile-hukuku",
     },
-
 ]

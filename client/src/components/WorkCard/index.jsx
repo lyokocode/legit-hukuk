@@ -1,6 +1,6 @@
 import "./workCard.scss"
+import { Link } from "react-router-dom"
 export const WorkCard = ({ work }) => {
-    console.log(work)
     return (
         <article className="workCard">
             <div className="workInfo">
@@ -18,7 +18,9 @@ export const WorkCard = ({ work }) => {
                     alt={`${work.title} image`}
                     className="workImage"
                 />
-                <h1>{work.title}</h1>
+                <Link to={`./${work.slug}`}>
+                    <h1>{work.title}</h1>
+                </Link>
             </div>
         </article>
     )

@@ -3,11 +3,13 @@ import "./services.scss"
 import { WorkCard } from "@/components/WorkCard"
 import { workData } from "@/mockData/data"
 export const Services = () => {
-    console.log(workData)
+
     return (
         <>
             <Hero
                 image="/hero2.png"
+                title="Hizmetlerimiz ve Çalışma Alanlarımız"
+
             />
 
             <Detail

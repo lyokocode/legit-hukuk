@@ -1,6 +1,6 @@
 
 export const SingleBlog = () => {
     return (
-        <div>SingleBlog</div>
+        <div>SingleService</div>
     )
 }
