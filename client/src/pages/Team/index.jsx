@@ -3,10 +3,16 @@ import { Link } from "react-router-dom"
 import { FaLinkedin, FaTwitter } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import { lawyerData } from '@/mockData/data';
+import useFetch from "@/hooks/useFetch";
 
 import "./team.scss"
 
 export const Team = () => {
+
+    const { data: lawyers, loading, error } = useFetch(
+        `${import.meta.env.VITE_REACT_BASE_URL}/api/users`
+    );
+    console.log(lawyers)
     return (
         <>
             <Hero
