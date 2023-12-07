@@ -10,4 +10,6 @@ export { LawyerCard } from "./LawyerCard"
 
 export { LawyerAbout } from "./LawyerAbout"
 
+export { WorkCard } from "./WorkCard"
+
 export { Footer } from "./Footer"
