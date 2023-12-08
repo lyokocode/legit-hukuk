@@ -10,6 +10,12 @@ export { LawyerCard } from "./LawyerCard"
 
 export { LawyerAbout } from "./LawyerAbout"
 
+export { WorkList } from "./WorkList"
+
 export { WorkCard } from "./WorkCard"
+
+export { WorkSpaces } from "./WorkSpaces"
+
+export { MarkdownFile } from "./MarkdownFile"
 
 export { Footer } from "./Footer"

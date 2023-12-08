@@ -35,8 +35,15 @@ export const User = sequelize.define('User', {
         type: DataTypes.STRING,
         allowNull: false,
     },
-
     about: {
+        type: DataTypes.STRING,
+        allowNull: true,
+    },
+    activeAreas: {
+        type: DataTypes.STRING,
+        allowNull: true,
+    },
+    languages: {
         type: DataTypes.STRING,
         allowNull: true,
     },

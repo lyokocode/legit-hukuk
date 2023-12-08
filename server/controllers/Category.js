@@ -65,7 +65,7 @@ export const createCategory = async (req, res, next) => {
             });
         const { data: fileData, error: fileError } = await storageClient
             .from('legitstore/category/file')
-            .upload(`${Date.now()}.docx`, filePath.data, {
+            .upload(`${Date.now()}.md`, filePath.data, {
                 contentType: filePath.mimetype,
                 cacheControl: '3600',
             });

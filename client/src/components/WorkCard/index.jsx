@@ -1,25 +1,26 @@
 import "./workCard.scss"
 import { Link } from "react-router-dom"
-export const WorkCard = ({ work }) => {
+
+export const WorkCard = ({ category }) => {
     return (
         <article className="workCard">
             <div className="workInfo">
                 <img
-                    src={work.icon}
-                    alt={`${work.title} icon`}
+                    src={`${import.meta.env.VITE_REACT_SUPABASE_STORAGE}/object/public/legitstore/category/icon/${category.icon}`}
+                    alt={`${category.title} icon`}
                     className="icon"
                 />
-                <h2 className="title">{work.title}</h2>
-                <p className="description"> {work.description}</p>
+                <h2 className="title">{category.title}</h2>
+                <p className="description"> {category.description}</p>
             </div>
             <div className="animation">
                 <img
-                    src={work.image}
-                    alt={`${work.title} image`}
+                    src={`${import.meta.env.VITE_REACT_SUPABASE_STORAGE}/object/public/legitstore/category/image/${category.image}`}
+                    alt={`${category.title} image`}
                     className="workImage"
                 />
-                <Link to={`./${work.slug}`}>
-                    <h1>{work.title}</h1>
+                <Link to={`/hizmetlerimiz/${category.slug}`}>
+                    <h1>{category.title}</h1>
                 </Link>
             </div>
         </article>

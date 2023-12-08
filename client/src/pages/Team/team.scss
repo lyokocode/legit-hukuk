@@ -41,7 +41,6 @@
                 font-size: 2rem;
                 font-weight: 400;
                 transition: all 0.5s ease-in;
-
             }
 
             .position {
@@ -62,12 +61,12 @@
             .iconLinks {
                 display: flex;
                 align-items: center;
+                gap: 1rem;
                 justify-content: space-evenly;
 
                 a {
                     svg {
                         transition: all 0.5s ease-in;
-
                     }
                 }
 
@@ -81,8 +80,6 @@
             }
 
             &:hover {
-                height: 40%;
-
                 .name {
                     color: red;
                 }

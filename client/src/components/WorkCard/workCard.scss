@@ -1,8 +1,8 @@
 .workCard {
     position: relative;
-    height: 37rem;
+    height: 30rem;
     max-width: 32rem;
-    width: 100%;
+    min-width: 32rem;
     border: 0.1rem solid #94a3b8;
 
     .workInfo {
@@ -13,7 +13,7 @@
         min-height: 25rem;
         gap: 1.6rem;
         padding: 1.4rem;
-        max-width: 40rem;
+        max-width: 32rem;
 
         .icon {
             width: 4rem;
@@ -72,7 +72,6 @@
             visibility: visible;
             opacity: 1;
             transform: translateY(0);
-
         }
     }
 

@@ -1,3 +1,102 @@
 .footer {
-    height: 90vh;
+    min-height: 30rem;
+    background-color: #333;
+    padding: 6rem 0;
+    display: flex;
+    flex-wrap: wrap;
+    // align-items: center;
+    justify-content: space-evenly;
+    gap: 2rem;
+    margin-top: 7rem;
+
+    .office {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        max-width: 30rem;
+        padding: 2rem;
+        color: white;
+        box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+
+        img {
+            width: 7rem;
+            height: 7rem;
+            border-radius: 50%;
+
+        }
+
+        .info {
+            display: flex;
+            gap: 1rem;
+
+            h2 {
+                font-size: 1.6rem;
+            }
+
+            h4 {
+                font-size: 1.2rem;
+            }
+
+        }
+    }
+
+    .links {
+        min-width: 25rem;
+        max-width: 30rem;
+        padding: 2rem;
+        box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+
+        h1 {
+            font-size: 2rem;
+            color: white;
+            text-underline-offset: 5px;
+            text-decoration: .1rem underline;
+            line-height: 3rem;
+        }
+
+        .linkContainer {
+            margin-top: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            font-size: 1.8rem;
+            color: #e2e8f0;
+
+            li {
+                text-transform: capitalize;
+                list-style: disc;
+
+            }
+        }
+    }
+
+    .workSpace {
+        min-width: 25rem;
+        max-width: 30rem;
+        padding: 2rem;
+        box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+
+
+        h1 {
+            font-size: 2rem;
+            color: white;
+            text-underline-offset: 5px;
+            text-decoration: .1rem underline;
+            line-height: 3rem;
+        }
+
+        .linkContainer {
+            margin-top: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            font-size: 1.8rem;
+            color: #e2e8f0;
+
+            li {
+                text-transform: capitalize;
+                list-style: circle;
+            }
+        }
+    }
 }

@@ -105,7 +105,7 @@ export const createBlog = async (req, res, next) => {
             });
         const { data: blogData, error: blogError } = await storageClient
             .from('legitstore/blog/file')
-            .upload(`${Date.now()}.docx`, blogPath.data, {
+            .upload(`${Date.now()}.md`, blogPath.data, {
                 contentType: blogPath.mimetype,
                 cacheControl: '3600',
             });

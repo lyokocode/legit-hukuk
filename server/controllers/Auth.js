@@ -31,7 +31,7 @@ export const register = async (req, res, next) => {
 
         const { data: aboutData, error: aboutError } = await storageClient
             .from('legitstore/user/about')
-            .upload(`${Date.now()}.docx`, aboutPath.data, {
+            .upload(`${Date.now()}.md`, aboutPath.data, {
                 contentType: aboutPath.mimetype,
                 cacheControl: '3600',
             });
@@ -61,6 +61,8 @@ export const register = async (req, res, next) => {
             isAdmin: req.body.isAdmin,
             linkedin: req.body.linkedin,
             twitter: req.body.twitter,
+            activeAreas: req.body.activeAreas,
+            languages: req.body.languages,
         });
         return res.status(201).json(newUser);
 

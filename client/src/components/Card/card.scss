@@ -11,7 +11,7 @@
 
     .card {
         height: 22rem;
-        min-width: 41rem;
+        // min-width: 41rem;
         position: relative;
 
         &:nth-child(3) {
@@ -23,27 +23,23 @@
 
                 .index {
                     color: rgba($color: red, $alpha: 0.5);
-
                 }
-
             }
         }
 
         &:hover {
             .info {
-
                 .index {
-                    font-size: 20rem;
+                    font-size: 10rem;
                     position: absolute;
                     top: 50%;
                     left: 50%;
                     transform: translate(-50%, -50%);
                     opacity: 0.5;
-                    z-index: -1;
                 }
 
                 .title {
-                    font-size: 3rem;
+                    font-size: 100%;
                     position: absolute;
                     z-index: 99;
                     top: 50%;
@@ -55,12 +51,16 @@
             }
         }
 
-
-
-        .categoryImage {
+        .imageContainer {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            max-width: 41rem;
+
+            .categoryImage {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
         }
 
         .info {
@@ -83,7 +83,7 @@
 
             .title {
                 transition: 0.8s all ease-in;
-                font-size: 1.8rem;
+                font-size: 1.6rem;
                 text-wrap: nowrap;
                 color: #ccc;
             }

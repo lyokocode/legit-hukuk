@@ -76,3 +76,36 @@ export const workData = [
         slug: "aile-hukuku",
     },
 ]
+
+export const links = [
+    {
+        id: 1,
+        title: "Resmi gazete",
+        link: "/"
+    },
+    {
+        id: 2,
+        title: "mevzuat bilgi sistemi ",
+        link: "/"
+    },
+    {
+        id: 3,
+        title: "t.c. adalet bakanlığı",
+        link: "/"
+    },
+    {
+        id: 4,
+        title: "anayasa mahkemesi",
+        link: "/"
+    },
+    {
+        id: 5,
+        title: "makaleler",
+        link: "/makaleler"
+    },
+    {
+        id: 6,
+        title: "iletişim",
+        link: "/iletisim"
+    },
+]

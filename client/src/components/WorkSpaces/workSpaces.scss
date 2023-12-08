@@ -1,0 +1,87 @@
+.workSpaces {
+    background-color: red;
+    background-image: url("/background1.png");
+    height: 100%;
+    width: 100%;
+    padding: 0 10rem;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+
+    @media screen and (max-width:768px) {
+        display: none;
+    }
+
+    .header {
+        padding: 10rem 0;
+        display: flex;
+        gap: 2rem;
+
+        .left {
+            flex: 1;
+
+            .title {
+                display: flex;
+                align-items: center;
+                gap: 1rem;
+
+                h1 {
+                    font-size: 1.8rem;
+                    line-height: 1.6rem;
+                    font-weight: 600;
+                    color: crimson;
+                    position: relative;
+                    width: max-content;
+
+                }
+
+                .hr {
+                    background-color: crimson;
+                    left: calc(100% + 2rem);
+                    // position: absolute;
+                    z-index: 99;
+                    top: 50%;
+                    width: 50px;
+                    height: 1px;
+                }
+            }
+
+            h2 {
+                font-size: 3.6rem;
+                margin: 1rem 0 0;
+                color: white;
+            }
+        }
+
+        .center {
+            flex: 3;
+
+            color: white;
+            font-size: 1.6rem;
+            font-family: "Open Sans";
+
+            p {
+                margin: 0 0 2rem;
+            }
+        }
+
+        .right {
+            flex: 1;
+            background-color: #910000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: max-content;
+            width: max-content;
+            padding: 14px 10px;
+            max-width: 16rem;
+            color: white;
+            font-size: 1.4rem;
+            text-wrap: nowrap;
+
+            @media screen and (max-width:950px) {
+                display: none;
+            }
+        }
+    }
+}

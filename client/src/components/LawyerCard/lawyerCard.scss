@@ -20,6 +20,7 @@
 
 
         .imageContainer {
+            min-width: 40rem;
             width: 47rem;
             height: 47rem;
 
@@ -64,6 +65,7 @@
                 font-size: 3.6rem;
                 font-weight: 500;
                 position: relative;
+                text-transform: capitalize;
 
                 &::after {
                     content: " ";
@@ -100,6 +102,14 @@
                     font-family: 'Open Sans';
                     font-weight: 400;
                     text-transform: capitalize;
+
+                    &.position {
+                        color: red;
+                    }
+
+                    &.email {
+                        text-transform: lowercase;
+                    }
                 }
             }
 
