@@ -100,3 +100,141 @@ export const createCategory = async (req, res, next) => {
     }
 
 }
+
+
+// DELETE CATEGORY
+export const deleteCategory = async (req, res, next) => {
+    const { id } = req.query;
+
+    try {
+        const category = await Category.findByPk(id);
+        if (!category) {
+            return next(createError(404, " category is not defined"))
+        }
+
+        if (category) {
+            await storageClient
+                .from('legitstore')
+                .remove([`category/icon/${category.icon}`]);
+        }
+        if (category) {
+            await storageClient
+                .from('legitstore')
+                .remove([`category/file/${category.file}`]);
+        }
+        if (category) {
+            await storageClient
+                .from('legitstore')
+                .remove([`category/image/${category.image}`]);
+        }
+
+        await Category.destroy({
+            where: {
+                id: category.id
+            }
+        });
+
+        return res.json({ message: 'Category has been deleted' });
+    } catch (err) {
+        next(err)
+    }
+}
+
+// UPDATE CATEGORY
+export const updateCategory = async (req, res, next) => {
+    const { id } = req.query;
+    const updatedFields = req.body;
+
+    const { newImage, newFile, newIcon } = req.files || {};
+
+    try {
+        const category = await Category.findByPk(id);
+        if (!category) {
+            return next(createError(404, "Category is not defined"));
+        }
+
+        // update image
+        if (newImage) {
+            const { data: newImageData, error: newImageError } = await storageClient
+                .from('legitstore/category/image')
+                .upload(`${newImage?.name}-${Date.now()}.png`, newImage.data, {
+                    contentType: newImage.mimetype,
+                    cacheControl: '3600',
+                });
+
+            if (newImageError) {
+                return res.status(500).json({ message: 'Resim yüklenirken bir hata oluştu.' });
+            }
+
+            // delete old image in storage
+            if (category.image) {
+                await storageClient
+                    .from('legitstore')
+                    .remove([`category/image/${category.image}`]);
+            }
+
+            // category file upload
+            category.image = newImageData.path;
+        }
+
+        // update file
+        if (newFile) {
+            const { data: newFileData, error: newFileError } = await storageClient
+                .from('legitstore/category/file')
+                .upload(`${newFile?.name}-${Date.now()}.md`, newFile.data, {
+                    contentType: newFile.mimetype,
+                    cacheControl: '3600',
+                });
+
+            if (newFileError) {
+                return res.status(500).json({ message: 'dosya yüklenirken bir hata oluştu.' });
+            }
+
+            // delete old file in storage
+            if (category.file) {
+                await storageClient
+                    .from('legitstore')
+                    .remove([`category/file/${category.file}`]);
+            }
+
+            // Category file upload
+            category.file = newFileData.path;
+        }
+
+        // update icon
+        if (newIcon) {
+            const { data: newIconData, error: newIconError } = await storageClient
+                .from('legitstore/category/icon')
+                .upload(`${newIcon?.name}-${Date.now()}.md`, newIcon.data, {
+                    contentType: newIcon.mimetype,
+                    cacheControl: '3600',
+                });
+
+            if (newIconError) {
+                return res.status(500).json({ message: 'icon yüklenirken bir hata oluştu.' });
+            }
+
+            // delete old icon in storage
+            if (category.icon) {
+                await storageClient
+                    .from('legitstore')
+                    .remove([`category/icon/${category.icon}`]);
+            }
+
+            // Category file upload
+            category.icon = newIconData.path;
+        }
+
+        Object.keys(updatedFields).forEach((field) => {
+            if (field !== 'id') {
+                category[field] = updatedFields[field];
+            }
+        });
+
+        await category.save();
+
+        return res.json({ category });
+    } catch (err) {
+        next(err);
+    }
+}

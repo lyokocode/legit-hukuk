@@ -14,6 +14,7 @@ export const getAllUser = async (req, res, next) => {
     }
 }
 
+// GET USER
 export const getUser = async (req, res, next) => {
     const { slug } = req.query;
 
@@ -30,7 +31,6 @@ export const getUser = async (req, res, next) => {
         next(err)
     }
 }
-
 
 // DELETE USER
 export const deleteUser = async (req, res, next) => {
@@ -64,6 +64,7 @@ export const deleteUser = async (req, res, next) => {
     }
 }
 
+// UPDATE USER
 export const updateUser = async (req, res, next) => {
     const { id } = req.query;
     const updatedFields = req.body;
