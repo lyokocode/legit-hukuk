@@ -1,0 +1,52 @@
+.markdownPage {
+    font-size: 1.8rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+
+    .ql-container.ql-snow,
+    .ql-toolbar.ql-snow {
+        border: none;
+        border-right: 0.05rem solid var(--color-base-secondary);
+    }
+
+    .editor {
+        display: flex;
+        height: 85vh;
+        background-color: var(--background-secondary);
+        color: var(--color-base);
+
+        .reactQuil {
+            flex: 1;
+            height: 80vh;
+
+            .textarea {
+                width: 100%;
+                height: 100%;
+            }
+        }
+
+        .view {
+            padding: 1rem;
+            margin: 1rem 0;
+            flex: 1;
+            min-height: 100%;
+            max-height: 80vh;
+            overflow-y: auto;
+
+            img {
+                max-width: 75%;
+            }
+        }
+    }
+
+    .downdoadBtn {
+        background-color: #0ea5e9;
+        width: max-content;
+        text-align: center;
+        margin: 0 auto;
+        z-index: 50;
+        font-size: 2rem;
+        padding: 0.8rem 1.6rem;
+    }
+}

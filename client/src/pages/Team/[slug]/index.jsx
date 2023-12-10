@@ -20,13 +20,19 @@ export const SingleLawyer = () => {
             {
                 loading ? "loading..." : (error ? "error" : (
                     <>
-                        <LawyerCard
-                            lawyer={lawyer}
-                        />
+                        {
+                            lawyer && lawyer?.avatar && lawyer?.about && (
+                                <>
+                                    <LawyerCard
+                                        lawyer={lawyer}
+                                    />
 
-                        <LawyerAbout
-                            document={lawyer.about}
-                        />
+                                    <LawyerAbout
+                                        document={lawyer.about}
+                                    />
+                                </>
+                            )
+                        }
                     </>
                 ))
             }

@@ -1,0 +1,44 @@
+.pageHeader {
+    background-color: #f8fafc;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    height: 4rem;
+    background-color: var(--background-secondary);
+
+    .searchInput {
+        border-radius: 0.5rem;
+        height: 90%;
+        border: 0.01rem solid var(--background-primary);
+        padding-left: 1.5rem;
+        min-width: 30rem;
+        font-size: 1.3rem;
+        background-color: var(--background-third);
+        color: var(--color-base-secondary);
+
+
+
+        @media screen and (max-width:640px) {
+            display: none;
+        }
+    }
+
+    .createBtn {
+        background-color: #6ee7b7;
+        color: #10b981;
+        font-size: 1.8rem;
+        padding: 0.4rem 0.8rem;
+        border-radius: 0.5rem;
+    }
+
+    .reloadBtn {
+        width: 3rem;
+        height: 3rem;
+
+        .reloadIcon {
+            width: 100%;
+            height: 100%;
+            color: #3b82f6;
+        }
+    }
+}

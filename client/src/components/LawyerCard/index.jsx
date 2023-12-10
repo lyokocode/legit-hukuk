@@ -7,7 +7,7 @@ export const LawyerCard = ({ lawyer }) => {
     return (
         <article className="lawyerCard">
             {
-                lawyer ? (
+                lawyer && lawyer?.avatar ? (
                     <div className="lawyerWrapper">
                         <div className="imageContainer">
                             <img

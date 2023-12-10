@@ -1,34 +1,51 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { Blogs, Home, Login, Projects, Categories, Editor, NotFound, SingleUser, New, NewBlog } from './pages'
+import Layout from './utils/Layout'
+import { PrivateRoutes } from './utils/PrivateRoute'
+import { Users } from './pages'
+import { categoryInputs, projectInputs, userInputs } from './mockData/formSource'
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <Router>
+      <Routes>
+        <Route element={<PrivateRoutes />}>
+
+          <Route element={<Layout />}>
+            <Route path="/" element={<Home />} />
+
+            <Route path="/blogs"  >
+              <Route index element={<Blogs />} />
+              <Route path='create' element={<NewBlog />} />
+            </Route>
+
+            <Route path="/categories"  >
+              <Route index element={<Categories />} />
+              <Route path='create' element={<New inputs={categoryInputs} title="create new category" api="api/categories" />} />
+            </Route>
+
+            <Route path="/projects"  >
+              <Route index element={<Projects />} />
+              <Route path='create' element={<New inputs={projectInputs} title="create new project" api="api/projects" />} />
+            </Route>
+
+
+            <Route path='/users'>
+              <Route index element={<Users />} />
+              <Route path=":slug" element={<SingleUser />} />
+            </Route>
+            <Route path="/user-create" element={<New inputs={userInputs} title="create new user" api="api/auth/register" />} />
+
+
+            <Route path="/editor" element={<Editor />} />
+          </Route>
+        </Route>
+        < Route path='/login' element={<Login />} />
+        <Route path='*' element={<NotFound />} />
+
+      </Routes>
+    </Router>
   )
 }
 

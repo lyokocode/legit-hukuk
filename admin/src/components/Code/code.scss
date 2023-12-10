@@ -1,0 +1,18 @@
+.code {
+    position: relative;
+    font-size: 1.6rem;
+
+    .icon {
+        background: none;
+        outline: none;
+        border: none;
+        cursor: pointer;
+    }
+
+    .copy-icon {
+        position: absolute;
+        top: 1.6rem;
+        right: 1.6rem;
+        z-index: 5;
+    }
+}

@@ -1,0 +1,317 @@
+.appeparance {
+    max-width: 600px;
+    color: var(--color-base-secondary);
+
+    .title {
+        margin-top: 32px;
+        margin-bottom: 12px;
+        font-size: 23px;
+        line-height: 28px;
+        font-weight: 800;
+        text-align: center;
+    }
+
+    .desc {
+        padding: 0 32px 32px 32px;
+
+        p {
+            text-align: center;
+            font-size: 15px;
+            line-height: 20px;
+            margin-bottom: 2px;
+        }
+    }
+
+    .profile {
+        margin: 0 32px 16px 32px;
+
+        .profileWrapper {
+            border: 1px solid var(--background-third);
+            padding: 12px 16px;
+            display: flex;
+            gap: 12px;
+
+            .logo {
+                img {
+                    width: 40px;
+                    height: 40px;
+                    border-radius: 50%;
+                }
+            }
+
+            .post {
+                flex: 1;
+                display: flex;
+                flex-direction: column;
+                font-size: 15px;
+                font-weight: 700;
+                line-height: 20px;
+
+                .userInfo {
+                    margin-bottom: 2px;
+                    display: flex;
+                    align-items: center;
+
+                    svg {
+                        height: 18.75px;
+                        width: 18.75px;
+                        color: #1d9bf0;
+                        margin-left: 2px;
+                    }
+
+                    .username {
+                        margin-left: 4px;
+                        display: flex;
+                        align-items: center;
+                        color: #71767b;
+                    }
+                }
+
+                .postContent {
+                    color: var(--color-base-secondary);
+
+                }
+            }
+        }
+    }
+
+    .fontSize {
+        margin-bottom: 12px;
+
+        h6 {
+            color: var(--color-base-secondary);
+            margin-bottom: 4px;
+            font-weight: 700;
+            line-height: 20px;
+            font-size: 13px;
+        }
+
+        .fontSizeContainer {
+            background-color: var(--background-secondary);
+            padding: 16px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+
+            .smaller {
+                font-size: 8px;
+                position: relative;
+                top: 12px;
+            }
+
+            .settings {
+                flex: 1;
+                height: 4px;
+                border-radius: 16px;
+                background-color: var(--color-secondary);
+                position: relative;
+
+                .thin {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    border-radius: 16px;
+                    height: 4px;
+                    background-color: var(--color-primary);
+                }
+
+                .settingContent {
+                    display: flex;
+                    justify-content: space-between;
+                    position: absolute;
+                    width: calc(100% + 16px);
+                    top: -13px;
+                    margin: 0 -8px;
+
+                    .settingBtn {
+                        position: relative;
+                        width: 32px;
+                        height: 32px;
+                        border-radius: 50%;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+
+                        &.active {}
+
+                        .ball {
+                            font-size: 10px;
+                            width: 12px;
+                            height: 12px;
+                            border-radius: 50%;
+                            background-color: var(--color-secondary);
+
+                            &.active {
+                                width: 16px;
+                                height: 16px;
+                            }
+                        }
+
+                        &:hover {
+                            &::before {
+                                background-color: var(--color-primary);
+                                opacity: 0.1;
+                            }
+                        }
+
+                        &::before {
+                            content: "";
+                            border-radius: 100%;
+                            position: absolute;
+                            inset: 0;
+                        }
+                    }
+                }
+            }
+
+            .bigger {
+                position: relative;
+                top: 12px;
+                font-size: 16px;
+            }
+        }
+    }
+
+    .color {
+        margin-bottom: 12px;
+
+        h6 {
+            font-size: 12px;
+            color: var(--color-base-secondary);
+            margin-bottom: 4px;
+            font-weight: 700;
+            line-height: 20px;
+            font-size: 13px;
+        }
+
+        .colorContainer {
+            padding: 8px 12px;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-radius: 16px;
+            gap: 8px;
+            background-color: var(--background-secondary);
+
+            .selectColor {
+                width: 45px;
+                height: 45px;
+                border-radius: 50%;
+
+                svg {
+                    color: var(--color-base);
+                }
+            }
+        }
+    }
+
+    .background {
+        h6 {
+            font-size: 12px;
+            color: var(--color-base-secondary);
+            margin-bottom: 4px;
+            font-weight: 700;
+            line-height: 20px;
+            font-size: 13px;
+        }
+
+        .backgroundContainer {
+            padding: 4px 12px;
+            margin-bottom: 12px;
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            background-color: var(--background-secondary);
+            border-radius: 16px;
+            gap: 8px;
+
+            button {
+                height: 62px;
+                border-radius: 4px;
+                font-weight: 800;
+                border: 1px solid rgba($color: white, $alpha: 0.1);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 10px;
+
+                &.active {
+                    border: 2px solid var(--color-primary);
+                }
+
+                &.light {
+                    background-color: #fff;
+                    color: #0f1419;
+                }
+
+                &.normal {
+                    background-color: #15202b;
+                    color: #a0a0a0;
+                }
+
+                &.dark {
+                    background-color: #000;
+                    color: #f7f9f9;
+
+                    &.active {
+                        border: 2px solid var(--color-primary);
+                    }
+                }
+
+                .clickContainer {
+                    width: 40px;
+                    height: 40px;
+                    border-radius: 50%;
+                    flex-shrink: 0;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    transition: all .5s;
+
+                    &:hover {
+                        background-color: rgba($color: #fff, $alpha: 0.1);
+                    }
+
+                    .content {
+                        width: 20px;
+                        height: 20px;
+                        border: 2px solid #3e4144;
+                        border-radius: 50%;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+
+                        svg {
+                            display: none;
+                        }
+
+                        &.active {
+                            background-color: var(--color-primary);
+
+                            svg {
+                                display: block;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .submitBtn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        button {
+            background-color: var(--color-primary);
+            font-size: 18px;
+            color: var(--color-base-secondary);
+            padding: 4px 8px;
+            border-radius: 5px;
+        }
+    }
+
+}
