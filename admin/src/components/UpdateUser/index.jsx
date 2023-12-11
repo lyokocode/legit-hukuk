@@ -11,7 +11,8 @@ export const UpdateUser = ({ onClose, userData, reFetch }) => {
     const { auth } = useSelector(state => state.auth)
 
     const [formData, setFormData] = useState({});
-    const navigate = useNavigate();
+
+    const navigate = useNavigate()
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -22,7 +23,7 @@ export const UpdateUser = ({ onClose, userData, reFetch }) => {
             for (const key in formData) {
                 if (Array.isArray(formData[key])) {
                     formData[key].forEach((file, index) => {
-                        form.append(key, file);  // Content-Type düzenlendi
+                        form.append(`${key}_${index}`, file);
                     });
                 } else {
                     form.append(key, formData[key]);
@@ -60,7 +61,7 @@ export const UpdateUser = ({ onClose, userData, reFetch }) => {
         }));
     };
 
-    console.log(formData);
+    console.log(formData)
 
     return (
         <div className="updateUser">

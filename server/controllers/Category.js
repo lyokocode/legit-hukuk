@@ -181,7 +181,7 @@ export const updateCategory = async (req, res, next) => {
         if (newFile) {
             const { data: newFileData, error: newFileError } = await storageClient
                 .from('legitstore/category/file')
-                .upload(`${newFile?.name}-${Date.now()}.md`, newFile.data, {
+                .upload(`${Date.now()}.md`, newFile.data, {
                     contentType: newFile.mimetype,
                     cacheControl: '3600',
                 });
