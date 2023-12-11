@@ -1,6 +1,12 @@
 
 export const userInputs = [
     {
+        id: 6,
+        label: "User Avatar",
+        model: "avatar",
+        type: "file"
+    },
+    {
         id: 1,
         label: "Username",
         model: "userName",
@@ -35,12 +41,48 @@ export const userInputs = [
         type: "select",
         options: ["", "true", "false"]
     },
+
     {
-        id: 6,
-        label: "User Avatar",
-        model: "avatar",
+        id: 7,
+        label: "detail",
+        model: "detail",
+        type: "text",
+        placeholder: "detail"
+    },
+    {
+        id: 8,
+        label: "User about file",
+        model: "about",
         type: "file"
-    }
+    },
+    {
+        id: 9,
+        label: "position",
+        model: "position",
+        type: "text",
+        placeholder: "position"
+    },
+    {
+        id: 10,
+        label: "languages",
+        model: "languages",
+        type: "text",
+        placeholder: "languages"
+    },
+    {
+        id: 11,
+        label: "linkedin",
+        model: "linkedin",
+        type: "text",
+        placeholder: "linkedin"
+    },
+    {
+        id: 12,
+        label: "twitter",
+        model: "twitter",
+        type: "text",
+        placeholder: "twitter"
+    },
 ]
 
 export const categoryInputs = [
@@ -82,101 +124,50 @@ export const categoryInputs = [
 
 
 ]
+
 export const blogInputs = [
     {
         id: 1,
-        label: "Blog Name",
-        type: "text",
-        placeholder: "React ile Private Route Nasıl Oluşturulur?"
+        label: "Blog Image",
+        model: "image",
+        type: "file",
+        placeholder: "Blog Image"
     },
     {
         id: 2,
-        label: "Blog File",
-        type: "file",
-        placeholder: ""
+        label: "Blog Name",
+        model: "title",
+        type: "text",
+        placeholder: "iş hukuku"
     },
     {
         id: 3,
-        label: "Blog Date",
-        type: "date",
-        placeholder: ""
-    },
-    {
-        id: 4,
-        label: "Is Popular",
-        type: "select",
-        options: ["true", "false"]
-    },
-    {
-        id: 5,
         label: "Blog Description",
-        type: "textarea",
-        placeholder: "Enter description..."
-    },
-    {
-        id: 6,
-        label: "Editor's Pick?",
-        type: "select",
-        options: ["true", "false"]
-    },
-    {
-        id: 7,
-        label: "Blog Categories",
-        type: "text",
-        placeholder: ""
-    },
-]
-
-
-export const projectInputs = [
-    {
-        id: 1,
-        label: "Image",
-        model: "image",
-        type: "file",
-        placeholder: "Project Image"
-    },
-    {
-        id: 2,
-        label: "Project Description",
         model: "description",
         type: "textarea",
         placeholder: "Enter description..."
     },
     {
-        id: 3,
-        label: "Project Name",
-        model: "title",
-        type: "text",
-        placeholder: "Private Route"
-    },
-    {
         id: 4,
-        label: "Project Date",
+        label: "Blog Date",
         model: "date",
         type: "date",
         placeholder: ""
     },
     {
         id: 5,
-        label: "Project Categories",
-        model: "categories",
-        type: "text",
-        placeholder: "React, tailwindcss, redux"
+        label: "Blog File",
+        model: "blog",
+        type: "file",
+        placeholder: "Blog File"
     },
+
     {
         id: 6,
-        label: "Github Link",
-        model: "githubLink",
-        type: "text",
-        placeholder: "https://github.com/lyokocode"
-    },
-    {
-        id: 7,
-        label: "Project Link",
-        model: "projectLink",
-        type: "text",
-        placeholder: "https://aelita.vercel.app"
+        label: "Category",
+        model: "CategoryId",
+        type: "select",
+        options: [""]
     },
 
 ]

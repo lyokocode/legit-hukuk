@@ -1,9 +1,9 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import { Blogs, Home, Login, Projects, Categories, Editor, NotFound, SingleUser, New, NewBlog } from './pages'
+import { Blogs, Home, Login, Categories, Editor, NotFound, SingleUser, New } from './pages'
 import Layout from './utils/Layout'
 import { PrivateRoutes } from './utils/PrivateRoute'
 import { Users } from './pages'
-import { categoryInputs, projectInputs, userInputs } from './mockData/formSource'
+import { blogInputs, categoryInputs, userInputs } from './mockData/formSource'
 
 function App() {
 
@@ -17,26 +17,20 @@ function App() {
 
             <Route path="/blogs"  >
               <Route index element={<Blogs />} />
-              <Route path='create' element={<NewBlog />} />
+              <Route path="create" element={<New inputs={blogInputs} title="blog" api="api/blogs" />} />
+
             </Route>
 
             <Route path="/categories"  >
               <Route index element={<Categories />} />
-              <Route path='create' element={<New inputs={categoryInputs} title="create new category" api="api/categories" />} />
+              <Route path='create' element={<New inputs={categoryInputs} title="category" api="api/categories" />} />
             </Route>
-
-            <Route path="/projects"  >
-              <Route index element={<Projects />} />
-              <Route path='create' element={<New inputs={projectInputs} title="create new project" api="api/projects" />} />
-            </Route>
-
 
             <Route path='/users'>
               <Route index element={<Users />} />
               <Route path=":slug" element={<SingleUser />} />
             </Route>
-            <Route path="/user-create" element={<New inputs={userInputs} title="create new user" api="api/auth/register" />} />
-
+            <Route path="/user-create" element={<New inputs={userInputs} title="user" api="api/auth/register" />} />
 
             <Route path="/editor" element={<Editor />} />
           </Route>

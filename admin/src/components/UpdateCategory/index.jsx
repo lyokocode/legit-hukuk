@@ -15,28 +15,45 @@ export const UpdateCategory = ({ onClose, categoryData, reFetch }) => {
 
         try {
             const form = new FormData();
+
             for (const key in formData) {
-                form.append(key, formData[key]);
+                if (Array.isArray(formData[key])) {
+                    formData[key].forEach((file, index) => {
+                        form.append(`${key}_${index}`, file);
+                    });
+                } else {
+                    form.append(key, formData[key]);
+                }
             }
-            await axios.put(`${import.meta.env.VITE_REACT_BASE_URL}/api/categories/category?id=${categoryData?.id}`, form);
 
-            reFetch()
+            await axios.put(
+                `${import.meta.env.VITE_REACT_BASE_URL}/api/categories/category?id=${categoryData?.id}`,
+                form
+            );
+
+            reFetch();
             onClose();
-
         } catch (error) {
-            console.log(error)
+            console.log(error);
         }
-
-    }
+    };
 
     const handleChange = (e) => {
         const { name, type, checked, files, value } = e.target;
-        const newValue = type === 'checkbox' ? checked : type === 'file' ? files[0] : value;
+        let newValue;
 
-        setFormData({
-            ...formData,
+        if (type === "checkbox") {
+            newValue = checked;
+        } else if (type === "file") {
+            newValue = files.length > 1 ? Array.from(files) : files[0];
+        } else {
+            newValue = value;
+        }
+
+        setFormData((prevFormData) => ({
+            ...prevFormData,
             [name]: newValue,
-        });
+        }));
     };
 
     return (
@@ -56,7 +73,7 @@ export const UpdateCategory = ({ onClose, categoryData, reFetch }) => {
                 <div className="bottom">
                     <div className="left">
                         <img
-                            src={`${import.meta.env.VITE_REACT_SUPABASE_STORAGE}/object/public/blog/categories/${categoryData?.image}`}
+                            src={`${import.meta.env.VITE_REACT_SUPABASE_STORAGE}/object/public/legitstore/category/image/${categoryData?.image}`}
                             alt=""
                         />
                     </div>
@@ -70,56 +87,73 @@ export const UpdateCategory = ({ onClose, categoryData, reFetch }) => {
                                 <label> category name:</label>
                                 <input
                                     type="text"
-                                    name="name"
-                                    placeholder={categoryData?.name}
-                                    value={formData.name}
+                                    name="title"
+                                    placeholder={categoryData?.title}
+                                    value={formData.title}
                                     onChange={handleChange}
 
                                 />
                             </div>
-
-                            {/* popular */}
+                            {/* category name */}
                             <div className="formInput">
-                                <label>Popular:</label>
-                                <select
-                                    name="popular"
-                                    value={formData.popular}
-                                    onChange={handleChange}
-                                >
-                                    <option value="">select</option>
-                                    <option value="false">false</option>
-                                    <option value="true">true</option>
-                                </select>
-                            </div>
-
-                            {/* category color */}
-                            <div className="formInput">
-                                <label> category color:</label>
-                                <input
+                                <label> category description:</label>
+                                <textarea
                                     type="text"
-                                    name="color"
-                                    placeholder={categoryData?.color}
-                                    value={formData.color}
+                                    name="description"
+                                    placeholder={categoryData?.description}
+                                    value={formData.description}
                                     onChange={handleChange}
+
                                 />
                             </div>
 
                             {/* category Image */}
                             <div className="formInput">
-                                <label htmlFor="file" style={{ cursor: "pointer" }}>
+                                <label htmlFor="newImage" style={{ cursor: "pointer" }}>
                                     <MdDriveFolderUpload size={35} />
                                 </label>
-                                <div>
-                                    Category Image
-                                </div>
+                                <div>Category Image</div>
                                 <input
-                                    type='file'
-                                    id='file'
+                                    type="file"
+                                    id="newImage"
                                     name="newImage"
                                     style={{ display: "none" }}
                                     onChange={handleChange}
+                                    multiple
                                 />
                             </div>
+
+                            {/* category Icon */}
+                            <div className="formInput">
+                                <label htmlFor="newIcon" style={{ cursor: "pointer" }}>
+                                    <MdDriveFolderUpload size={35} />
+                                </label>
+                                <div>Category Icon</div>
+                                <input
+                                    type="file"
+                                    id="newIcon"
+                                    name="newIcon"
+                                    style={{ display: "none" }}
+                                    onChange={handleChange}
+                                    multiple
+                                />
+                            </div>
+                            {/* category file */}
+                            <div className="formInput">
+                                <label htmlFor="newFile" style={{ cursor: "pointer" }}>
+                                    <MdDriveFolderUpload size={35} />
+                                </label>
+                                <div>Category file</div>
+                                <input
+                                    type="file"
+                                    id="newFile"
+                                    name="newFile"
+                                    style={{ display: "none" }}
+                                    onChange={handleChange}
+                                    multiple
+                                />
+                            </div>
+
                             {/* send button */}
                             <div className="formInput">
                                 <button className="sendBtn" type="submit">
@@ -141,10 +175,9 @@ UpdateCategory.propTypes = {
     onClose: PropTypes.func.isRequired,
     categoryData: PropTypes.shape({
         id: PropTypes.number.isRequired,
-        name: PropTypes.string.isRequired,
-        color: PropTypes.string.isRequired,
+        title: PropTypes.string.isRequired,
         image: PropTypes.string.isRequired,
-        popular: PropTypes.bool.isRequired,
+        description: PropTypes.string.isRequired,
     }),
     reFetch: PropTypes.func.isRequired
 };

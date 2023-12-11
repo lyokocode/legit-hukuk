@@ -5,7 +5,7 @@ import { Error, UpdateCategory } from "..";
 import PropTypes from 'prop-types';
 
 export const CategoryList = ({ category, reFetch }) => {
-    const { name, image, color, popular, id } = category;
+    const { title, image, id } = category;
 
     const [errorMessage, setErrorMessage] = useState()
     const [error, serError] = useState(null)
@@ -30,17 +30,15 @@ export const CategoryList = ({ category, reFetch }) => {
         setModalVisible(false);
     };
     return (
-        <div className={`categoryCard ${popular ? 'popular' : ''}`}>
+        <div className={`categoryCard`}>
             <div className="category-image">
                 <img
-                    // style={{ width: "100px" }}
                     src={`${import.meta.env.VITE_REACT_SUPABASE_STORAGE}/object/public/legitstore/category/image/${image}`}
                 />
             </div>
             <div className="categoryDetails">
-                <h2 className="category-title">{name}</h2>
+                <h2 className="category-title">{title}</h2>
             </div>
-            <div className="colorContainer" style={{ background: color }} />
 
             <div className="buttonContainer">
                 <button className="actionButton update" onClick={openModal} >
@@ -65,10 +63,8 @@ export const CategoryList = ({ category, reFetch }) => {
 }
 CategoryList.propTypes = {
     category: PropTypes.shape({
-        name: PropTypes.string,
+        title: PropTypes.string,
         image: PropTypes.string,
-        color: PropTypes.string,
-        popular: PropTypes.bool,
         id: PropTypes.number
     }),
     reFetch: PropTypes.func

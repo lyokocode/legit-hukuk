@@ -32,11 +32,13 @@ export const BlogList = ({ blog, reFetch }) => {
 
     return (
         <div className="blogList">
-            <img
-                className="blogImage"
-                src={`${import.meta.env.VITE_REACT_SUPABASE_STORAGE}/object/public/blog/images/${blog.image}`}
-                alt=""
-            />
+            {blog.image && (
+                <img
+                    className="blogImage"
+                    src={`${import.meta.env.VITE_REACT_SUPABASE_STORAGE}/object/public/legitstore/blog/image/${blog.image}`}
+                    alt=""
+                />
+            )}
             <div className="blogInfo">
                 <p>{blog?.title}</p>
             </div>

@@ -11,7 +11,6 @@ export const SingleUser = () => {
     const { auth } = useSelector(state => state.auth)
 
     const { data: user, loading, error, reFetch } = useFetch(`${import.meta.env.VITE_REACT_BASE_URL}/api/users/user?slug=${slug}`)
-    console.log(user)
     const [modalVisible, setModalVisible] = useState(false);
 
     const openModal = () => {
@@ -23,7 +22,7 @@ export const SingleUser = () => {
     };
 
     const [selected, setSelected] = useState("Blogs")
-
+    console.log(user)
     return (
         <>
             {
@@ -34,8 +33,8 @@ export const SingleUser = () => {
                                 <div className="container">
                                     <div className="profile">
                                         <div className="profile-image">
-                                            {auth?.avatar ? (
-                                                <img src={`${import.meta.env.VITE_REACT_SUPABASE_STORAGE}/object/public/legitstore/user/avatar/${auth?.avatar}`} alt="" />
+                                            {user?.avatar ? (
+                                                <img src={`${import.meta.env.VITE_REACT_SUPABASE_STORAGE}/object/public/legitstore/user/avatar/${user?.avatar}`} alt="" />
 
                                             ) : (
                                                 <AiOutlineUser />
@@ -51,21 +50,21 @@ export const SingleUser = () => {
                                                     reFetch={reFetch}
                                                 />
                                             )}
-                                            <h1 className="profile-user-name">@{auth.userName}</h1>
+                                            <h1 className="profile-user-name">@{user.userName}</h1>
 
-                                            {/* {
-                                            auth.isAdmin | auth?.id == id && (
-                                                <button
-                                                    className="btn profile-edit-btn"
-                                                    onClick={openModal}
-                                                >
-                                                    <span>
-                                                        Edit Profile
-                                                        <AiOutlineSetting />
-                                                    </span>
-                                                </button>
-                                            )
-                                        } */}
+                                            {
+                                                auth.isAdmin | auth?.slug == slug && (
+                                                    <button
+                                                        className="btn profile-edit-btn"
+                                                        onClick={openModal}
+                                                    >
+                                                        <span>
+                                                            Edit Profile
+                                                            <AiOutlineSetting />
+                                                        </span>
+                                                    </button>
+                                                )
+                                            }
 
                                             <button className="btn profile-settings-btn" aria-label="profile settings"><i className="fas fa-cog" aria-hidden="true"></i></button>
 
@@ -75,7 +74,6 @@ export const SingleUser = () => {
 
                                             <ul>
                                                 <li onClick={() => setSelected("Blogs")}><span className="profile-stat-count" >{user?.Blogs?.length}</span> Blog</li>
-                                                <li onClick={() => setSelected("Projects")}><span className="profile-stat-count" >{user?.Projects?.length}</span> Project</li>
                                                 <li onClick={() => setSelected("Categories")}><span className="profile-stat-count" >{user?.Categories?.length}</span> Categories</li>
                                             </ul>
 
@@ -112,7 +110,7 @@ export const SingleUser = () => {
 
                                                 </div>
                                             )) : (
-                                                selected === "Categories" ? user?.Categories && user?.Categories.map((category, i) => (
+                                                user?.Categories && user?.Categories.map((category, i) => (
                                                     <div key={i} className="gallery-item" tabIndex="0">
 
 
@@ -126,21 +124,7 @@ export const SingleUser = () => {
                                                         </div>
 
                                                     </div>
-                                                )) : (
-                                                    selected === "Projects" && user?.Projects && user?.Projects?.map((project, i) => (
-                                                        <div key={i} className="gallery-item" tabIndex="0">
-                                                            <img src={`${import.meta.env.VITE_REACT_SUPABASE_STORAGE}/object/public/blog/projects/${project.image}`} className="gallery-image" alt="" />
-
-                                                            <div className="gallery-item-info">
-                                                                <ul>
-                                                                    <li className="gallery-item-likes"><span className="visually-hidden">name:</span><i className="fas fa-heart" aria-hidden="true"></i> {project?.title}</li>
-                                                                    {/* <li className="gallery-item-comments"><span className="visually-hidden">Comments:</span><i className="fas fa-comment" aria-hidden="true"></i> 2</li> */}
-                                                                </ul>
-                                                            </div>
-
-                                                        </div>
-                                                    ))
-                                                )
+                                                ))
                                             )
                                         }
                                     </div>

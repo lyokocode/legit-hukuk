@@ -21,7 +21,6 @@
         overflow-y: auto;
 
 
-
         .top {
             .closeBtn {
                 position: absolute;
@@ -101,8 +100,7 @@
                             border: none;
                             border-bottom: 0.1rem solid gray;
                             background-color: var(--background-secondary);
-                            color: var(--color-base);
-
+                            // color: var(--color-base);
                         }
 
                         textarea {
@@ -110,9 +108,7 @@
                             min-width: 100%;
                             max-width: 100%;
                             max-height: 15vh;
-                            background-color: var(--color-base-secondary);
-                            color: var(--color-base);
-
+                            padding: 0.5rem 1rem;
                         }
 
                         .sendBtn {

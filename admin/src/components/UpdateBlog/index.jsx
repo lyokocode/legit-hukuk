@@ -8,40 +8,60 @@ import "./updateBlog.scss"
 
 
 export const UpdateBlog = ({ onClose, blogData, reFetch }) => {
-
-    const [formData, setFormData] = useState({});
-
     const { data } = useFetch(
         `${import.meta.env.VITE_REACT_BASE_URL}/api/categories`
     );
+
+    const [formData, setFormData] = useState({});
+    console.log(formData)
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
         try {
             const form = new FormData();
+
             for (const key in formData) {
-                form.append(key, formData[key]);
+                if (Array.isArray(formData[key])) {
+                    formData[key].forEach((file, index) => {
+                        form.append(`${key}_${index}`, file);
+                    });
+                } else {
+                    form.append(key, formData[key]);
+                }
             }
-            await axios.put(`${import.meta.env.VITE_REACT_BASE_URL}/api/blogs/blog?id=${blogData?.id}`, form);
 
-            reFetch()
+            await axios.put(
+                `${import.meta.env.VITE_REACT_BASE_URL}/api/blogs/blog?id=${blogData?.id}`,
+                form
+            );
+
+            reFetch();
             onClose();
-
         } catch (error) {
-            console.log(error)
+            console.log(error);
         }
+    };
 
-    }
     const handleChange = (e) => {
         const { name, type, checked, files, value } = e.target;
-        const newValue = type === 'checkbox' ? checked : type === 'file' ? files[0] : value;
+        let newValue;
 
-        setFormData({
-            ...formData,
+        if (type === "checkbox") {
+            newValue = checked;
+        } else if (type === "file") {
+            newValue = files.length > 1 ? Array.from(files) : files[0];
+        } else {
+            newValue = value;
+        }
+
+        setFormData((prevFormData) => ({
+            ...prevFormData,
             [name]: newValue,
-        });
+        }));
     };
+
+
     return (
         <div className="updateBlog">
             <div className="updateContainer">
@@ -61,12 +81,14 @@ export const UpdateBlog = ({ onClose, blogData, reFetch }) => {
 
                 <div className="bottom">
                     {/* blog image */}
-                    <div className="left">
-                        <img
-                            src={`${import.meta.env.VITE_REACT_SUPABASE_STORAGE}/object/public/blog/images/${blogData?.image}`}
-                            alt=""
-                        />
-                    </div>
+                    {blogData && blogData.image && (
+                        <div className="left">
+                            <img
+                                src={`${import.meta.env.VITE_REACT_SUPABASE_STORAGE}/object/public/legitstore/blog/image/${blogData?.image}`}
+                                alt=""
+                            />
+                        </div>
+                    )}
 
                     {/* form container */}
                     <div className="right">
@@ -142,33 +164,6 @@ export const UpdateBlog = ({ onClose, blogData, reFetch }) => {
                                 />
                             </div>
 
-                            {/* popular */}
-                            <div className="formInput">
-                                <label>Popular:</label>
-                                <select
-                                    value={formData.popular}
-                                    name="popular"
-                                    onChange={handleChange}
-                                >
-                                    <option value=""></option>
-                                    <option value="false">false</option>
-                                    <option value="true">true</option>
-                                </select>
-                            </div>
-
-                            {/* editors pick */}
-                            <div className="formInput">
-                                <label>{"Editor's Pick:"}</label>
-                                <select
-                                    value={formData.editorsPick}
-                                    name="editorsPick"
-                                    onChange={handleChange}
-                                >
-                                    <option value=""></option>
-                                    <option value="false">false</option>
-                                    <option value="true">true</option>
-                                </select>
-                            </div>
 
                             {/* categories */}
                             <div className="formInput">
@@ -181,7 +176,7 @@ export const UpdateBlog = ({ onClose, blogData, reFetch }) => {
                                     <option value=""></option>
                                     {data && data.map((cat) => (
                                         <option key={cat.id} value={cat.id} >
-                                            {cat.name}
+                                            {cat.title}
                                         </option>
                                     ))}
                                 </select>
@@ -209,9 +204,6 @@ UpdateBlog.propTypes = {
         description: PropTypes.string.isRequired,
         image: PropTypes.string.isRequired,
         date: PropTypes.string.isRequired,
-        slug: PropTypes.string.isRequired,
-        popular: PropTypes.bool.isRequired,
-        editorsPick: PropTypes.bool.isRequired,
     }),
     reFetch: PropTypes.func.isRequired
 };

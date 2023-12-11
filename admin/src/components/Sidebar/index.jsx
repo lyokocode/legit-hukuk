@@ -2,7 +2,7 @@ import "./sidebar.scss"
 import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { MdDashboard, MdNotifications, MdSettingsSystemDaydream, MdOutlinePsychology, MdSettingsApplications } from "react-icons/md"
-import { AiOutlineUser, AiOutlineProject, AiOutlineEdit } from "react-icons/ai"
+import { AiOutlineUser, AiOutlineEdit } from "react-icons/ai"
 import { BiCategory, BiLogoBlogger, BiUserCircle } from "react-icons/bi"
 import { createModal, useModals } from "../../utils/modal"
 import Modal from "../../modals"
@@ -55,12 +55,7 @@ export const Sidebar = () => {
                             <span>Categories</span>
                         </li>
                     </Link>
-                    <Link to="/projects">
-                        <li>
-                            <AiOutlineProject className="icon" />
-                            <span>Projects</span>
-                        </li>
-                    </Link>
+
                     <p className="title">Useful</p>
                     <li>
                         <MdNotifications className="icon" />

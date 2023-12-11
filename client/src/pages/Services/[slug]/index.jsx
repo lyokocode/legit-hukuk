@@ -15,21 +15,27 @@ export const SingleService = () => {
     console.log(category)
     return (
         <>
-            <Hero
-                image={`${import.meta.env.VITE_REACT_SUPABASE_STORAGE}/object/public/legitstore/category/image/${category?.image}`}
-                title={category.title}
+            {category.image && (
+                <Hero
+                    image={`${import.meta.env.VITE_REACT_SUPABASE_STORAGE}/object/public/legitstore/category/image/${category?.image}`}
+                    title={category.title}
 
-            />
+                />
+            )}
 
-            <Detail
-                img={`${import.meta.env.VITE_REACT_SUPABASE_STORAGE}/object/public/legitstore/category/icon/${category?.icon}`}
-                title="Çalışma Alanlarımız ve Faaliyetlerimiz"
-                description={category.title}
-            />
+            {category.icon && (
+                <Detail
+                    img={`${import.meta.env.VITE_REACT_SUPABASE_STORAGE}/object/public/legitstore/category/icon/${category?.icon}`}
+                    title="Çalışma Alanlarımız ve Faaliyetlerimiz"
+                    description={category.title}
+                />
+            )}
 
-            <MarkdownFile
-                address={`category/file/${category.file}`}
-            />
+            {category.file &&
+                <MarkdownFile
+                    address={`category/file/${category.file}`}
+                />
+            }
 
         </>
     )

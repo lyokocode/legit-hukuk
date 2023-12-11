@@ -133,3 +133,33 @@ export const createBlog = async (req, res, next) => {
         next(err);
     }
 };
+
+
+// DELETE BLOG
+export const deleteBlog = async (req, res, next) => {
+    const { id } = req.query;
+
+    try {
+        const blog = await Blog.findByPk(id);
+        if (!blog) {
+            return next(createError(404, "Blog is not defined"));
+        }
+
+        // Bloga ait olan dosyaları sil
+        await Promise.all([
+            storageClient.from('legitstore').remove([`blog/file/${blog.file}`]),
+            storageClient.from('legitstore').remove([`blog/image/${blog.image}`]),
+        ]);
+
+        // Kategoriyi veritabanından sil
+        await Blog.destroy({
+            where: {
+                id: blog.id
+            }
+        });
+
+        return res.json({ message: 'Blog has been deleted' });
+    } catch (err) {
+        next(err);
+    }
+};

@@ -1,26 +1,35 @@
+import { Blog } from "../models/Blog.js";
 import { User } from "../models/User.js";
+import { Category } from "../models/Category.js";
 import { createError } from "../utils/error.js";
 import { storageClient } from "../database/supabase.js"
 
-
-// GET ALL USERS
 export const getAllUser = async (req, res, next) => {
     try {
-        const users = await User.findAll();
+        const users = await User.findAll({
+            include: [
+                Blog,
+                Category
+            ],
+        });
+
         res.status(200).json(users);
 
     } catch (err) {
         next(err)
     }
 }
-
 // GET USER
 export const getUser = async (req, res, next) => {
     const { slug } = req.query;
 
     try {
         const user = await User.findOne({
-            where: { slug }
+            where: { slug },
+            include: [
+                Blog,
+                Category
+            ]
         })
         if (!user) {
             return next(createError(404, " User is not defined"))
@@ -77,6 +86,13 @@ export const updateUser = async (req, res, next) => {
             return next(createError(404, "User is not defined"));
         }
 
+        // delete old avatar in storage
+        if (user.avatar) {
+            await storageClient
+                .from('legitstore')
+                .remove([`user/avatar/${user.avatar}`]);
+        }
+
         // update image
         if (newImage) {
             const { data: newImageData, error: newImageError } = await storageClient
@@ -90,42 +106,35 @@ export const updateUser = async (req, res, next) => {
                 return res.status(500).json({ message: 'Resim yüklenirken bir hata oluştu.' });
             }
 
-            // delete old avatar in storage
-            if (user.avatar) {
-                await storageClient
-                    .from('legitstore')
-                    .remove([`user/avatar/${user.avatar}`]);
-            }
+
 
             // User file upload
             user.avatar = newImageData.path;
+        }
+
+        // delete old file in storage
+        if (user.about) {
+            await storageClient
+                .from('legitstore')
+                .remove([`user/about/${user.about}`]);
         }
 
         // update file
         if (newFile) {
             const { data: newFileData, error: newFileError } = await storageClient
                 .from('legitstore/user/about')
-                .upload(`${newFile?.name}-${Date.now()}.md`, newFile.data, {
+                .upload(`${Date.now()}.md`, newFile.data, {
                     contentType: newFile.mimetype,
                     cacheControl: '3600',
                 });
 
             if (newFileError) {
-                return res.status(500).json({ message: 'dosya yüklenirken bir hata oluştu.' });
-            }
-
-            // delete old file in storage
-            if (user.about) {
-                await storageClient
-                    .from('legitstore')
-                    .remove([`user/about/${user.about}`]);
+                return res.status(500).json({ newFileError });
             }
 
             // User file upload
             user.about = newFileData.path;
         }
-
-        console.log(newFile)
 
         Object.keys(updatedFields).forEach((field) => {
             if (field !== 'id') {
