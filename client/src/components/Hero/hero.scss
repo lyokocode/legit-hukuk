@@ -42,4 +42,57 @@
         }
     }
 
+    .blogInfo {
+        position: absolute;
+        left: 5%;
+        bottom: 25%;
+        width: 100%;
+        color: white;
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        width: max-content;
+
+        .category {
+            margin-left: 5rem;
+            font-size: 13px;
+            font-weight: 500;
+            color: white;
+            text-transform: uppercase;
+            letter-spacing: .5px;
+            position: relative;
+            width: max-content;
+
+            .hr {
+                height: 1px;
+                width: 4rem;
+                background-color: #fff;
+                position: absolute;
+                top: 50%;
+                left: -50px;
+                transition: .5s all ease;
+
+            }
+
+            &:hover {
+                .hr {
+                    width: 100%;
+                    left: 0;
+                    transform: translateY(-2px);
+                }
+            }
+        }
+
+        .blog {
+            font-size: 3.2rem;
+        }
+
+        .date {
+            font-size: 1.4rem;
+            margin-left: auto;
+            margin-top: 1rem;
+        }
+
+    }
+
 }

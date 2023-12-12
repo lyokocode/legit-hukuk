@@ -6,6 +6,8 @@ export const Blogs = () => {
         <>
             <Hero
                 image="/hero2.png"
+                title="Blog"
+
             />
 
             <Detail

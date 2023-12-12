@@ -2,12 +2,12 @@ import PropTypes from "prop-types";
 import "./hero.scss"
 import { Link } from "react-router-dom"
 
-export const Hero = ({ image = "./legit.png", title = "" }) => {
-
+export const Hero = ({ image = "./legit.png", title = "", blog = false }) => {
+    console.log(blog)
     return (
         <div className="heroSection">
             <img className="heroImage" src={image} alt="Legit Hukuk & danışmanlık" />
-            {title !== "" && (
+            {title !== "" && !blog && (
                 <div className="textContainer">
                     <h1 className="page">{title}</h1>
                     <div className="link">
@@ -16,11 +16,24 @@ export const Hero = ({ image = "./legit.png", title = "" }) => {
                     </div>
                 </div>
             )}
+            {
+                blog && (
+                    <div className="blogInfo">
+                        <div className="category">
+                            <Link>
+                                {blog?.Category?.title}
+                            </Link>
+                            <div className="hr"></div>
+                        </div>
+                        <div className="blog">{blog?.title}</div>
+                        <div className="date">{blog?.date}</div>
+                    </div>
+                )
+            }
         </div>
     )
 }
 
 Hero.propTypes = {
     image: PropTypes.string,
-    title: PropTypes.string,
 };

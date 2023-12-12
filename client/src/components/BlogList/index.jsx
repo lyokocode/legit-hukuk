@@ -24,7 +24,12 @@ export const BlogList = () => {
         <section className='blogList'>
             {blogs?.map(blog => (
                 <article key={blog.id} className="blogCard">
-                    <img src="/law4.png" alt="" />
+                    {blog.image && (
+                        <img
+                            src={`${import.meta.env.VITE_REACT_SUPABASE_STORAGE}/object/public/legitstore/blog/image/${blog.image}`}
+                            alt=""
+                        />
+                    )}
                     <Link
                         className="categoryName"
                         to={`/hizmetlerimiz/${blog?.Category?.slug}`}

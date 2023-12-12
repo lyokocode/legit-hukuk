@@ -53,7 +53,6 @@ export const getAllBlogs = async (req, res, next) => {
 export const getBlog = async (req, res, next) => {
     try {
         const { slug } = req.query;
-        console.log(slug)
 
         const blog = await Blog.findOne({
             where: { slug },
@@ -64,7 +63,7 @@ export const getBlog = async (req, res, next) => {
                 },
                 {
                     model: Category,
-                    attributes: ['name'],
+                    attributes: ['title', 'slug'],
                 },
             ],
 
