@@ -3,6 +3,8 @@ import { Link } from "react-router-dom"
 import { FaLinkedin, FaTwitter } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import useFetch from "@/hooks/useFetch";
+import { Helmet } from "react-helmet";
+
 
 import "./team.scss"
 
@@ -14,6 +16,13 @@ export const Team = () => {
 
     return (
         <>
+            <Helmet>
+                <meta charSet="utf-8" />
+                <title>Legit Hukuk | Ekibimiz</title>
+                <link rel="canonical" href="https://legithukuk.com" />
+            </Helmet>
+
+
             <Hero
                 image="/hero1.png"
                 title="Ekibimiz"

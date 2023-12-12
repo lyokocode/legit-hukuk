@@ -1,6 +1,7 @@
 import { Detail, Hero, MarkdownFile } from "@/components"
 import useFetch from "@/hooks/useFetch"
 import { useParams } from "react-router-dom"
+import { Helmet } from "react-helmet";
 
 export const SingleService = () => {
 
@@ -14,6 +15,14 @@ export const SingleService = () => {
     }
     return (
         <>
+
+            <Helmet>
+                <meta charSet="utf-8" />
+                <title>{` ${category?.title}`}</title>
+                <link rel="canonical" href="https://legithukuk.com" />
+            </Helmet>
+
+
             {category.image && (
                 <Hero
                     image={`${import.meta.env.VITE_REACT_SUPABASE_STORAGE}/object/public/legitstore/category/image/${category?.image}`}

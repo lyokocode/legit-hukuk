@@ -1,9 +1,18 @@
 import { Hero, Detail, BlogList, Menu } from "@/components"
+import { Helmet } from "react-helmet";
 import "./blogs.scss"
 
 export const Blogs = () => {
     return (
         <>
+
+            <Helmet>
+                <meta charSet="utf-8" />
+                <title>Legit Hukuk | Makalelerimiz</title>
+                <link rel="canonical" href="https://legithukuk.com" />
+            </Helmet>
+
+
             <Hero
                 image="/hero2.png"
                 title="Blog"

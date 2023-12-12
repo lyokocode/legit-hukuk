@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom"
 import { Hero, MarkdownFile } from "@/components"
 import useFetch from "@/hooks/useFetch"
+import { Helmet } from "react-helmet";
 
 export const SingleBlog = () => {
     const { slug } = useParams()
@@ -12,7 +13,16 @@ export const SingleBlog = () => {
     }
 
     return (
-        <div>
+        <>
+
+            <Helmet>
+                <link rel="icon" href="/law1.png" />
+
+                <meta charSet="utf-8" />
+                <title>{`${blog?.title}`}</title>
+                <link rel="canonical" href="https://legithukuk.com" />
+            </Helmet>
+
             {
                 blog.image && (
                     <Hero
@@ -31,6 +41,6 @@ export const SingleBlog = () => {
                 )
             }
 
-        </div>
+        </>
     )
 }
