@@ -17,7 +17,7 @@ export const CategoryList = () => {
             {
                 categories && categories.map(category => (
                     <li key={category.id}>
-                        <Link to={`/hizmetlerimiz/${category?.slug}`}>
+                        <Link to={`/makaleler?categoryId=${category.id}`}>
                             {category.title}
                         </Link>
                     </li>

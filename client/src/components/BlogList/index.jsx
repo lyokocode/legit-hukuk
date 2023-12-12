@@ -1,8 +1,11 @@
 import "./blogList.scss"
-import { Link } from "react-router-dom"
+import { Link, useSearchParams } from "react-router-dom"
 import useFetch from "@/hooks/useFetch";
 
 export const BlogList = () => {
+
+    const [searchParams] = useSearchParams()
+    console.log(searchParams)
 
     function formatDate(dateString) {
         const options = { year: 'numeric', month: 'numeric', day: 'numeric' };
@@ -11,7 +14,7 @@ export const BlogList = () => {
     }
 
     const { data: blogs, loading, error } = useFetch(
-        `${import.meta.env.VITE_REACT_BASE_URL}/api/blogs`
+        `${import.meta.env.VITE_REACT_BASE_URL}/api/blogs?${searchParams.toString()}`
     );
     if (loading) {
         return "loading"
