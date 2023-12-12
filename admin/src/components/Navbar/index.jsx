@@ -27,8 +27,11 @@ export const Navbar = () => {
             </div>
             <div className="userInfo">
                 <div className="userImage">
-                    <img src={`${import.meta.env.VITE_REACT_SUPABASE_STORAGE}/object/public/legitstore/user/avatar/${auth?.avatar}`} alt="" className="image" />
-
+                    {
+                        auth.avatar && (
+                            <img src={`${import.meta.env.VITE_REACT_SUPABASE_STORAGE}/object/public/legitstore/user/avatar/${auth?.avatar}`} alt="" className="image" />
+                        )
+                    }
                 </div>
                 <p className="userName"> {auth?.fullName}</p>
             </div>

@@ -6,7 +6,7 @@ export { Categories } from "./Categories"
 
 
 export { Users } from "./Users"
-export { SingleUser } from "./Users/[id]"
+export { SingleUser } from "./Users/[slug]"
 
 export { New } from "./New"
 

@@ -97,7 +97,7 @@ export const updateUser = async (req, res, next) => {
         if (newImage) {
             const { data: newImageData, error: newImageError } = await storageClient
                 .from('legitstore/user/avatar')
-                .upload(`${newImage?.name}-${Date.now()}.png`, newImage.data, {
+                .upload(`${Date.now()}.png`, newImage.data, {
                     contentType: newImage.mimetype,
                     cacheControl: '3600',
                 });

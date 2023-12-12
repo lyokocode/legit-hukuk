@@ -9,7 +9,7 @@ import useFetch from "../../hooks/useFetch"
 export const SingleUser = () => {
     const { slug } = useParams()
     const { auth } = useSelector(state => state.auth)
-
+    console.log(slug)
     const { data: user, loading, error, reFetch } = useFetch(`${import.meta.env.VITE_REACT_BASE_URL}/api/users/user?slug=${slug}`)
     const [modalVisible, setModalVisible] = useState(false);
 
@@ -22,7 +22,7 @@ export const SingleUser = () => {
     };
 
     const [selected, setSelected] = useState("Blogs")
-
+    console.log(user)
     return (
         <>
             {
@@ -99,8 +99,13 @@ export const SingleUser = () => {
                                                 <div key={i} className="gallery-item" tabIndex="0">
 
 
-                                                    <img src={`${import.meta.env.VITE_REACT_SUPABASE_STORAGE}/object/public/blog/images/${blog.image}`} className="gallery-image" alt="" />
+                                                    {blog.image && (
 
+                                                        <img
+                                                            src={`${import.meta.env.VITE_REACT_SUPABASE_STORAGE}/object/public/legitstore/blog/image/${blog.image}`}
+                                                            className="gallery-image" alt="" />
+
+                                                    )}
                                                     <div className="gallery-item-info">
                                                         <ul>
                                                             <li className="gallery-item-likes"><span className="visually-hidden">name:</span><i className="fas fa-heart" aria-hidden="true"></i> {blog?.title}</li>
@@ -114,7 +119,9 @@ export const SingleUser = () => {
                                                     <div key={i} className="gallery-item" tabIndex="0">
 
 
-                                                        <img src={`${import.meta.env.VITE_REACT_SUPABASE_STORAGE}/object/public/blog/categories/${category.image}`} className="gallery-image" alt="" />
+                                                        <img
+                                                            src={`${import.meta.env.VITE_REACT_SUPABASE_STORAGE}/object/public/legitstore/category/image/${category.image}`}
+                                                            className="gallery-image" alt="" />
 
                                                         <div className="gallery-item-info">
                                                             <ul>

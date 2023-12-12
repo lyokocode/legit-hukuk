@@ -45,6 +45,10 @@ export const SingleService = () => {
                 />
             }
 
+            <div className="hr">
+
+            </div>
+
         </>
     )
 }

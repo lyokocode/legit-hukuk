@@ -85,7 +85,7 @@ export const Sidebar = () => {
                         <span>Settings</span>
                     </button>
                     <p className="title">User</p>
-                    <Link to={`/users/${auth.id}`}>
+                    <Link to={`/users/${auth.slug}`}>
                         <li>
                             <BiUserCircle className="icon" />
                             <span>Profile</span>
