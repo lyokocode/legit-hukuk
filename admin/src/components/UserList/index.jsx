@@ -20,7 +20,6 @@ export const UserList = ({ user, reFetch }) => {
         }
     };
 
-    console.log(user)
     return (
         <tbody className="body" >
             <tr >

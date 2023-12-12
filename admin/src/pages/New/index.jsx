@@ -59,7 +59,6 @@ export const New = ({ title, inputs, api }) => {
         }));
     };
 
-    console.log(formData)
     return (
         <div className="newPage">
             <header className="top">

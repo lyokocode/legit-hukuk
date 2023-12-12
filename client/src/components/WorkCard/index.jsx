@@ -2,7 +2,7 @@ import "./workCard.scss"
 import { Link } from "react-router-dom"
 
 export const WorkCard = ({ category }) => {
-    console.log(category)
+
     return (
         <>
             {category && category.file && category.icon ? (

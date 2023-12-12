@@ -11,7 +11,6 @@ export const Team = () => {
     const { data: lawyers, loading, error } = useFetch(
         `${import.meta.env.VITE_REACT_BASE_URL}/api/users`
     );
-    console.log(lawyers)
 
     return (
         <>

@@ -46,6 +46,7 @@
             transition: 0.5s all ease;
             font-weight: 400;
             font-size: 14px;
+            text-transform: capitalize;
 
             &::before {
                 content: "\2022";

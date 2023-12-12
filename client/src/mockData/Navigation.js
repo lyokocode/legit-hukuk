@@ -5,11 +5,11 @@ export const navigations = [
         link: "/ekibimiz",
         title: "Ekibimiz"
     },
-    {
-        id: "2",
-        link: "/hakkimizda",
-        title: "Hakkımızda"
-    },
+    // {
+    //     id: "2",
+    //     link: "/hakkimizda",
+    //     title: "Hakkımızda"
+    // },
     {
         id: "3",
         link: "/makaleler",

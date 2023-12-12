@@ -10,7 +10,7 @@ export const SingleBlog = () => {
     if (loading) {
         return "loading"
     }
-    console.log(blog)
+
     return (
         <div>
             {

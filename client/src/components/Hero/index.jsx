@@ -3,7 +3,7 @@ import "./hero.scss"
 import { Link } from "react-router-dom"
 
 export const Hero = ({ image = "./legit.png", title = "", blog = false }) => {
-    console.log(blog)
+
     return (
         <div className="heroSection">
             <img className="heroImage" src={image} alt="Legit Hukuk & danışmanlık" />

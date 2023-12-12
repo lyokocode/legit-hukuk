@@ -5,7 +5,6 @@ import useFetch from "@/hooks/useFetch";
 export const BlogList = () => {
 
     const [searchParams] = useSearchParams()
-    console.log(searchParams)
 
     function formatDate(dateString) {
         const options = { year: 'numeric', month: 'numeric', day: 'numeric' };
@@ -22,7 +21,6 @@ export const BlogList = () => {
     if (error) {
         return "error"
     }
-    console.log(blogs)
     return (
         <section className='blogList'>
             {blogs?.map(blog => (

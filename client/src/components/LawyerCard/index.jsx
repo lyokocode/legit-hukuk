@@ -3,7 +3,7 @@ import { FaLinkedin, FaTwitter } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 
 export const LawyerCard = ({ lawyer }) => {
-    console.log(lawyer)
+
     return (
         <article className="lawyerCard">
             {

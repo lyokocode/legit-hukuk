@@ -61,7 +61,6 @@ export const UpdateUser = ({ onClose, userData, reFetch }) => {
         }));
     };
 
-    console.log(formData)
 
     return (
         <div className="updateUser">

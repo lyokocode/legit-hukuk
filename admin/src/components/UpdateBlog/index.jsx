@@ -13,7 +13,6 @@ export const UpdateBlog = ({ onClose, blogData, reFetch }) => {
     );
 
     const [formData, setFormData] = useState({});
-    console.log(formData)
 
     const handleSubmit = async (e) => {
         e.preventDefault();

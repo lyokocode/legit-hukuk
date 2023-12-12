@@ -17,7 +17,7 @@ export const Navbar = () => {
             }
         }
     };
-    console.log(auth)
+
     return (
         <nav className="navbar">
             <div className="logo">

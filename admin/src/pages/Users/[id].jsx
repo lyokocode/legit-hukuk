@@ -22,7 +22,7 @@ export const SingleUser = () => {
     };
 
     const [selected, setSelected] = useState("Blogs")
-    console.log(user)
+
     return (
         <>
             {

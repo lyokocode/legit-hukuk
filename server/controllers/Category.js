@@ -4,7 +4,6 @@ import { storageClient } from "../database/supabase.js"
 
 // GET ALL CATEGORIES
 export const getAllCategories = async (req, res, next) => {
-
     try {
         const categories = await Category.findAll();
         res.status(200).json(categories);
