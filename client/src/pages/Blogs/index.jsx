@@ -1,23 +1,26 @@
-import { Hero, Detail } from "@/components"
+import { Hero, Detail, BlogList, Menu } from "@/components"
 import "./blogs.scss"
 
 export const Blogs = () => {
     return (
-        <div>
-            <div>
-                <Hero
-                    image="/hero2.png"
-                />
-            </div>
+        <>
+            <Hero
+                image="/hero2.png"
+            />
 
             <Detail
                 title="Legit Hukuk & Danışmanlık"
                 description="Makalelerimiz"
             />
 
-            <div>
-                deneme
+            <div className="blogContainer">
+                <div className="blogContainer">
+                    <BlogList />
+                </div>
+                <div className="menuContainer">
+                    <Menu />
+                </div>
             </div>
-        </div>
+        </>
     )
 }

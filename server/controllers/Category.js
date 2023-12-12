@@ -157,7 +157,7 @@ export const updateCategory = async (req, res, next) => {
         if (newImage) {
             const { data: newImageData, error: newImageError } = await storageClient
                 .from('legitstore/category/image')
-                .upload(`${newImage?.name}-${Date.now()}.png`, newImage.data, {
+                .upload(`${Date.now()}.png`, newImage.data, {
                     contentType: newImage.mimetype,
                     cacheControl: '3600',
                 });
@@ -205,7 +205,7 @@ export const updateCategory = async (req, res, next) => {
         if (newIcon) {
             const { data: newIconData, error: newIconError } = await storageClient
                 .from('legitstore/category/icon')
-                .upload(`${newIcon?.name}-${Date.now()}.md`, newIcon.data, {
+                .upload(`${Date.now()}.md`, newIcon.data, {
                     contentType: newIcon.mimetype,
                     cacheControl: '3600',
                 });

@@ -12,7 +12,7 @@ export const SingleService = () => {
     if (loading) {
         return "loading"
     }
-    console.log(category)
+    console.log(category.file)
     return (
         <>
             {category.image && (

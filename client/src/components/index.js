@@ -2,6 +2,12 @@ export { Navbar } from "./Navbar"
 
 export { Hero } from "./Hero"
 
+export { BlogList } from "./BlogList"
+
+export { CategoryList } from "./CategoryList"
+
+export { Menu } from "./Menu"
+
 export { Detail } from "./Detail"
 
 export { Card } from "./Card"

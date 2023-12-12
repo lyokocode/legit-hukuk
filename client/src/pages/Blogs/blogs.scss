@@ -1,0 +1,11 @@
+.blogContainer {
+    display: flex;
+
+    .blogContainer {
+        flex: 5;
+    }
+
+    .menuContainer {
+        flex: 2;
+    }
+}

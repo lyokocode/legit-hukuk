@@ -20,11 +20,10 @@ export const getAllBlogs = async (req, res, next) => {
                     },
                     {
                         model: Category,
-                        attributes: ['title'],
+                        attributes: ['title', 'slug'],
                     },
                 ],
                 order: [['date', 'DESC']]
-
 
             });
         } else {
@@ -36,7 +35,7 @@ export const getAllBlogs = async (req, res, next) => {
                     },
                     {
                         model: Category,
-                        attributes: ['title'],
+                        attributes: ['title', 'slug'],
                     },
                 ],
                 order: [['date', 'DESC']]
@@ -142,16 +141,21 @@ export const deleteBlog = async (req, res, next) => {
     try {
         const blog = await Blog.findByPk(id);
         if (!blog) {
-            return next(createError(404, "Blog is not defined"));
+            return next(createError(404, " blog is not defined"))
         }
 
-        // Bloga ait olan dosyaları sil
-        await Promise.all([
-            storageClient.from('legitstore').remove([`blog/file/${blog.file}`]),
-            storageClient.from('legitstore').remove([`blog/image/${blog.image}`]),
-        ]);
+        if (blog) {
+            await storageClient
+                .from('legitstore')
+                .remove([`blog/image/${blog.image}`]);
+        }
+        if (blog) {
+            await storageClient
+                .from('legitstore')
+                .remove([`blog/file/${blog.file}`]);
+        }
 
-        // Kategoriyi veritabanından sil
+
         await Blog.destroy({
             where: {
                 id: blog.id
@@ -160,6 +164,83 @@ export const deleteBlog = async (req, res, next) => {
 
         return res.json({ message: 'Blog has been deleted' });
     } catch (err) {
+        next(err)
+    }
+}
+
+
+// UPDATE BLOG
+export const updateBlog = async (req, res, next) => {
+    const { id } = req.query;
+    const updatedFields = req.body;
+
+    const { newImage, newFile } = req.files || {};
+
+    try {
+        const blog = await Blog.findByPk(id);
+        if (!blog) {
+            return next(createError(404, "Blog is not defined"));
+        }
+
+        // update image
+        if (newImage) {
+            const { data: newImageData, error: newImageError } = await storageClient
+                .from('legitstore/blog/image')
+                .upload(`${Date.now()}.png`, newImage.data, {
+                    contentType: newImage.mimetype,
+                    cacheControl: '3600',
+                });
+
+            if (newImageError) {
+                return res.status(500).json({ message: 'Resim yüklenirken bir hata oluştu.' });
+            }
+
+            // delete old image in storage
+            if (blog.image) {
+                await storageClient
+                    .from('legitstore')
+                    .remove([`blog/image/${blog.image}`]);
+            }
+
+            // blog image upload
+            blog.image = newImageData.path;
+        }
+
+        // update file
+        if (newFile) {
+            const { data: newFileData, error: newFileError } = await storageClient
+                .from('legitstore/blog/file')
+                .upload(`${Date.now()}.md`, newFile.data, {
+                    contentType: newFile.mimetype,
+                    cacheControl: '3600',
+                });
+
+            if (newFileError) {
+                return res.status(500).json({ message: 'dosya yüklenirken bir hata oluştu.' });
+            }
+
+            // delete old file in storage
+            if (blog.file) {
+                await storageClient
+                    .from('legitstore')
+                    .remove([`blog/file/${blog.file}`]);
+            }
+
+            // Category file upload
+            blog.file = newFileData.path;
+        }
+
+
+        Object.keys(updatedFields).forEach((field) => {
+            if (field !== 'id') {
+                blog[field] = updatedFields[field];
+            }
+        });
+
+        await blog.save();
+
+        return res.json({ blog });
+    } catch (err) {
         next(err);
     }
-};
+}
