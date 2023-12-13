@@ -55,13 +55,13 @@ export const Team = () => {
                                     <div className="iconLinks">
 
                                         <div className="iconLinks">
-                                            <a href={lawyer.twitter}>
+                                            <a href={lawyer.twitter} target="_blank" rel="noreferrer">
                                                 <FaTwitter size={20} />
                                             </a>
-                                            <a href={lawyer.linkedin}>
+                                            <a href={lawyer.linkedin} target="_blank" rel="noreferrer">
                                                 <FaLinkedin size={20} />
                                             </a>
-                                            <a href={lawyer.email}>
+                                            <a href={`mailto:${lawyer.email}`} >
                                                 <MdEmail size={20} />
                                             </a>
                                         </div>

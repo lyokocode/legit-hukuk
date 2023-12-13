@@ -23,13 +23,11 @@ export const SingleService = () => {
             </Helmet>
 
 
-            {category.image && (
-                <Hero
-                    image={`${import.meta.env.VITE_REACT_SUPABASE_STORAGE}/object/public/legitstore/category/image/${category?.image}`}
-                    title={category.title}
+            <Hero
+                image={`${import.meta.env.VITE_REACT_SUPABASE_STORAGE}/object/public/legitstore/category/image/${category?.image}` || "./hero3.png"}
+                title={category.title}
 
-                />
-            )}
+            />
 
             {category.icon && (
                 <Detail

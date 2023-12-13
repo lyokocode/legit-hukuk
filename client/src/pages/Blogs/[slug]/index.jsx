@@ -23,15 +23,12 @@ export const SingleBlog = () => {
                 <link rel="canonical" href="https://legithukuk.com" />
             </Helmet>
 
-            {
-                blog.image && (
-                    <Hero
-                        image={`${import.meta.env.VITE_REACT_SUPABASE_STORAGE}/object/public/legitstore/blog/image/${blog.image}`}
-                        title={blog.title}
-                        blog={blog}
-                    />
-                )
-            }
+
+            <Hero
+                image={`${import.meta.env.VITE_REACT_SUPABASE_STORAGE}/object/public/legitstore/blog/image/${blog.image}` || "/hero3.png"}
+                title={blog.title}
+                blog={blog}
+            />
 
             {
                 blog.blog && (

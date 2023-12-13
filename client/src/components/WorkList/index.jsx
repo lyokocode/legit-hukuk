@@ -10,6 +10,9 @@ export const WorkList = () => {
     if (loading) {
         return "loading"
     }
+    if (error) {
+        return "error"
+    }
     return (
         <div className="workList">
             {

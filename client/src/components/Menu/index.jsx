@@ -1,5 +1,3 @@
-import React from 'react'
-
 import "./menu.scss"
 import { CategoryList } from '../CategoryList';
 

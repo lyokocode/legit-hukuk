@@ -1,10 +1,18 @@
 import { Detail, Hero, Card, WorkSpaces } from "@/components/"
+import { Helmet } from "react-helmet";
 
 import "./home.scss"
 
 export const Home = () => {
     return (
         <div className="homePage">
+
+            <Helmet>
+                <meta charSet="utf-8" />
+                <title>Legit Hukuk & Danışmanlık </title>
+                <link rel="canonical" href="https://legithukuk.com" />
+            </Helmet>
+
             <div >
                 <Hero
                     image="/hero3.png"

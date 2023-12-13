@@ -1,6 +1,7 @@
 import "./lawyerCard.scss"
 import { FaLinkedin, FaTwitter } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
+import PropTypes from "prop-types";
 
 export const LawyerCard = ({ lawyer }) => {
 
@@ -53,3 +54,14 @@ export const LawyerCard = ({ lawyer }) => {
         </article>
     )
 }
+
+LawyerCard.propTypes = {
+    lawyer: PropTypes.shape({
+        avatar: PropTypes.string,
+        fullName: PropTypes.string,
+        position: PropTypes.string,
+        activeAreas: PropTypes.string,
+        email: PropTypes.string,
+        linkedin: PropTypes.string,
+    }),
+};

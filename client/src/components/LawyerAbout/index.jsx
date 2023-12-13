@@ -1,5 +1,6 @@
 import "./lawyerAbout.scss"
 import { MarkdownFile } from "@/components";
+import PropTypes from "prop-types";
 
 export const LawyerAbout = ({ document }) => {
 
@@ -15,3 +16,7 @@ export const LawyerAbout = ({ document }) => {
         </div>
     )
 }
+
+LawyerAbout.propTypes = {
+    document: PropTypes.string.isRequired,
+};

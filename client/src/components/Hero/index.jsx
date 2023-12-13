@@ -36,4 +36,15 @@ export const Hero = ({ image = "./legit.png", title = "", blog = false }) => {
 
 Hero.propTypes = {
     image: PropTypes.string,
+    title: PropTypes.string,
+    blog: PropTypes.oneOfType([
+        PropTypes.bool,
+        PropTypes.shape({
+            Category: PropTypes.shape({
+                title: PropTypes.string,
+            }),
+            title: PropTypes.string,
+            date: PropTypes.string,
+        }),
+    ]),
 };

@@ -9,7 +9,7 @@
     background-size: cover !important;
 
     @media screen and (max-width:768px) {
-        display: none;
+        padding: 0 1rem;
     }
 
     .header {
@@ -17,8 +17,14 @@
         display: flex;
         gap: 2rem;
 
+        @media screen and (max-width:768px) {
+            padding: 10rem 1rem;
+        }
+
         .left {
             flex: 1;
+
+
 
             .title {
                 display: flex;
@@ -59,6 +65,10 @@
             color: white;
             font-size: 1.6rem;
             font-family: "Open Sans";
+
+            @media screen and (max-width:768px) {
+                display: none;
+            }
 
             p {
                 margin: 0 0 2rem;
