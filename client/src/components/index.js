@@ -25,3 +25,5 @@ export { WorkSpaces } from "./WorkSpaces"
 export { MarkdownFile } from "./MarkdownFile"
 
 export { Footer } from "./Footer"
+
+export { Contact } from "./Contact"
