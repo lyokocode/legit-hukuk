@@ -24,17 +24,20 @@ export const SingleBlog = () => {
             </Helmet>
 
 
-            <Hero
-                image={`${import.meta.env.VITE_REACT_SUPABASE_STORAGE}/object/public/legitstore/blog/image/${blog.image}` || "/hero3.png"}
-                title={blog.title}
-                blog={blog}
-            />
 
             {
-                blog.blog && (
-                    <MarkdownFile
-                        address={`blog/file/${blog.blog}`}
-                    />
+                blog.blog && blog.image && (
+                    <>
+                        <Hero
+                            image={`${import.meta.env.VITE_REACT_SUPABASE_STORAGE}/object/public/legitstore/blog/image/${blog.image}` || "/hero3.png"}
+                            title={blog.title}
+                            blog={blog}
+                        />
+
+                        <MarkdownFile
+                            address={`blog/file/${blog.blog}`}
+                        />
+                    </>
                 )
             }
 

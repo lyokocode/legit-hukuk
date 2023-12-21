@@ -1,7 +1,13 @@
 import "./footer.scss"
-import { workData, links } from "@/mockData/data"
-
+import { links } from "@/mockData/data"
+import useFetch from "@/hooks/useFetch"
+import { Link } from "react-router-dom"
 export const Footer = () => {
+    const { data: categories, loading, error } = useFetch(
+        `${import.meta.env.VITE_REACT_BASE_URL}/api/categories`
+    );
+
+
     return (
         <footer className="footer">
             <div className="office">
@@ -38,7 +44,7 @@ export const Footer = () => {
 
                     {links && links.map(link => (
                         <li key={link.id}>
-                            <a href={link.link}>
+                            <a href={link.link} target="_blank" rel="noreferrer">
                                 {link.title}
                             </a>
                         </li>
@@ -47,13 +53,19 @@ export const Footer = () => {
             </div>
             <div className="workSpace">
                 <h1>Çalışma Alanları</h1>
-                <ul className="linkContainer">
-                    {workData && workData.map(work => (
-                        <li key={work.id}>
-                            {work.title}
-                        </li>
-                    ))}
-                </ul>
+                {
+                    loading ? ("loading") : (
+                        <ul className="linkContainer">
+                            {categories && categories.map(work => (
+                                <li key={work.id}>
+                                    <Link to={`/hizmetlerimiz/${work.slug}`}>
+                                        {work.title}
+                                    </Link>
+                                </li>
+                            ))}
+                        </ul>
+                    )
+                }
             </div>
         </footer>
     )

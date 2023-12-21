@@ -1,3 +1,4 @@
+
 export const cards = [
     {
         id: 1,
@@ -16,96 +17,45 @@ export const cards = [
     },
 ]
 
-export const lawyerData = [
-    {
-        id: 1,
-        name: "Alican Yurdasever",
-        slug: "alican-yurdasever",
-        position: "Kurucu/Avukat",
-        detail: "Hakkında; İstanbul Hukuk Fakültesi’nden 1990 yılında mezun olan",
-        image: "/law1.png",
-        links: [
-            "twitter", "email", "linkedin"
-        ]
-    },
-    {
-        id: 2,
-        name: "Canberk Bilir",
-        slug: "canberk-bilir",
-        position: "Kurucu/Avukat",
-        detail: "Hakkında; İstanbul Hukuk Fakültesi’nden 1990 yılında mezun olan",
-        image: "/law2.png",
-        links: [
-            "twitter", "email", "linkedin"
-        ]
-    },
-]
-
-export const workData = [
-    {
-        id: 1,
-        title: "Ticaret Hukuku",
-        icon: "/icon1.png",
-        description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley",
-        image: "/calisma1.png",
-        slug: "ticaret-hukuku",
-    },
-    {
-        id: 2,
-        title: "İş Hukuku",
-        icon: "/icon2.png",
-        description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley",
-        image: "/calisma2.png",
-        slug: "is-hukuku",
-
-    },
-    {
-        id: 3,
-        title: "Gayrimenkul Hukuku",
-        icon: "/icon3.png",
-        description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley",
-        image: "/calisma3.png",
-        slug: "gayrimenkul-hukuku",
-    },
-    {
-        id: 4,
-        title: "Aile Hukuku",
-        icon: "/icon4.png",
-        description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley",
-        image: "/calisma4.png",
-        slug: "aile-hukuku",
-    },
-]
-
 export const links = [
     {
         id: 1,
         title: "Resmi gazete",
-        link: "/"
+        link: "https://www.resmigazete.gov.tr"
     },
     {
         id: 2,
         title: "mevzuat bilgi sistemi ",
-        link: "/"
+        link: "https://www.mevzuat.gov.tr"
     },
     {
         id: 3,
         title: "t.c. adalet bakanlığı",
-        link: "/"
+        link: "https://www.adalet.gov.tr"
     },
     {
         id: 4,
         title: "anayasa mahkemesi",
-        link: "/"
+        link: "https://www.anayasa.gov.tr/tr/anasayfa/"
+    }
+]
+
+export const contact = [
+    {
+        id: "1",
+        detail: "+905532768090",
+        icon: "MdOutlineLocalPhone",
+        text: "Hafta içi 08.00 - 18.00",
+        link: "/",
+        title: "ara"
     },
     {
-        id: 5,
-        title: "makaleler",
-        link: "/makaleler"
+        id: "2",
+        detail: "info@legithukuk.com",
+        icon: "MdOutlineMailOutline",
+        text: "Mesai Saatleri içerisinde size döüş yapılacaktır.",
+        link: "/",
+        title: "Mail gönder"
     },
-    {
-        id: 6,
-        title: "iletişim",
-        link: "/iletisim"
-    },
+
 ]

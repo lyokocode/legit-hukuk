@@ -18,35 +18,34 @@ export const SingleService = () => {
 
             <Helmet>
                 <meta charSet="utf-8" />
-                <title>{` ${category?.title}`}</title>
+                <title>
+                    {loading ? "loading" : category?.title}
+                </title>
                 <link rel="canonical" href="https://legithukuk.com" />
             </Helmet>
 
 
-            <Hero
-                image={`${import.meta.env.VITE_REACT_SUPABASE_STORAGE}/object/public/legitstore/category/image/${category?.image}` || "./hero3.png"}
-                title={category.title}
+            {category.icon && category.image && (
+                <>
+                    <Hero
+                        image={`${import.meta.env.VITE_REACT_SUPABASE_STORAGE}/object/public/legitstore/category/image/${category?.image}` || "./hero3.png"}
+                        title={category.title}
 
-            />
-
-            {category.icon && (
-                <Detail
-                    img={`${import.meta.env.VITE_REACT_SUPABASE_STORAGE}/object/public/legitstore/category/icon/${category?.icon}`}
-                    title="Çalışma Alanlarımız ve Faaliyetlerimiz"
-                    description={category.title}
-                />
+                    />
+                    <Detail
+                        img={`${import.meta.env.VITE_REACT_SUPABASE_STORAGE}/object/public/legitstore/category/icon/${category?.icon}`}
+                        title="Çalışma Alanlarımız ve Faaliyetlerimiz"
+                        description={category.title}
+                    />
+                </>
             )}
-
             {category.file &&
                 <MarkdownFile
                     address={`category/file/${category.file}`}
                 />
             }
 
-            <div className="hr">
-
-            </div>
-
+            <div className="hr" />
         </>
     )
 }

@@ -1,0 +1,67 @@
+.contactContainer {
+    padding: 0 4rem;
+
+    .text {
+        text-align: center;
+        margin: 0 0 2rem 0;
+        padding: 0 1.5rem;
+
+        p {
+            font-size: 16px;
+            line-height: 2rem;
+            color: #565656;
+        }
+    }
+
+    .links {
+        margin-top: 1rem;
+        padding: 2rem 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 3rem;
+
+        .link {
+            padding: 1rem;
+            min-width: 25rem;
+            // border: 1px solid gray;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+            box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+
+            @media screen and (max-width:768px) {
+                width: 100%;
+                padding: 2rem;
+            }
+
+            svg {
+                color: red;
+                font-size: 4rem;
+            }
+
+            .contactDetail {
+                font-size: 1.8rem;
+            }
+
+            .info {
+                font-size: 1.6rem;
+                color: #565656;
+            }
+
+            .contactLink {
+                display: flex;
+                align-items: center;
+                gap: 1rem;
+                text-transform: capitalize;
+
+                span {
+                    font-size: 1.4rem;
+                    color: red;
+                }
+            }
+        }
+    }
+}

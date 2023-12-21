@@ -6,11 +6,10 @@ export const Detail = ({ title = "2023 | İzmir", description = "Legit Hukuk & D
     return (
         <article className="detail">
             <div className="info">
+
                 {
-                    img !== "" ? (
+                    img && (
                         <img className="detailImage" src={img} alt="hero image" />
-                    ) : (
-                        <div className="hr" />
                     )
                 }
                 {title}
