@@ -1,4 +1,4 @@
-import { Hero, Detail, BlogList, Menu } from "@/components"
+import { Hero, Detail, BlogList, Menu, Pagination } from "@/components"
 import { Helmet } from "react-helmet";
 import "./blogs.scss"
 

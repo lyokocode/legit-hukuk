@@ -6,7 +6,9 @@ import { Category } from "../models/Category.js";
 
 // GET ALL BLOGS
 export const getAllBlogs = async (req, res, next) => {
-    const { categoryId } = req.query
+    const { categoryId, page, pageSize } = req.query
+    console.log(page ? page : "page sayısı bulunamadı")
+    const offset = (page - 1) * pageSize;
 
     try {
         let blogs;
@@ -23,8 +25,9 @@ export const getAllBlogs = async (req, res, next) => {
                         attributes: ['title', 'slug'],
                     },
                 ],
-                order: [['date', 'DESC']]
-
+                order: [['date', 'DESC']],
+                offset,
+                limit: pageSize,
             });
         } else {
             blogs = await Blog.findAll({
@@ -38,11 +41,11 @@ export const getAllBlogs = async (req, res, next) => {
                         attributes: ['title', 'slug'],
                     },
                 ],
-                order: [['date', 'DESC']]
-
+                order: [['date', 'DESC']],
+                offset,
+                limit: pageSize,
             });
         }
-
         res.status(200).json(blogs);
     } catch (err) {
         next(err)

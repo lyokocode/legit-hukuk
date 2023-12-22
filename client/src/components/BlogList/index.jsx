@@ -1,10 +1,14 @@
 import "./blogList.scss"
 import { Link, useSearchParams } from "react-router-dom"
 import useFetch from "@/hooks/useFetch";
+import { Pagination } from "@/components";
+import { useState } from "react";
 
 export const BlogList = () => {
 
     const [searchParams] = useSearchParams()
+    const [page, setPage] = useState(1);
+    const [pageSize, setPageSize] = useState(1);
 
     function formatDate(dateString) {
         const options = { year: 'numeric', month: 'numeric', day: 'numeric' };
@@ -13,7 +17,8 @@ export const BlogList = () => {
     }
 
     const { data: blogs, loading, error } = useFetch(
-        `${import.meta.env.VITE_REACT_BASE_URL}/api/blogs?${searchParams.toString()}`
+        // `${import.meta.env.VITE_REACT_BASE_URL}/api/blogs?${searchParams.toString()}`
+        `${import.meta.env.VITE_REACT_BASE_URL}/api/blogs?page=${page}&pageSize=${pageSize}&${searchParams.toString()}`
     );
     if (loading) {
         return "loading"
@@ -21,6 +26,7 @@ export const BlogList = () => {
     if (error) {
         return "error"
     }
+    console.log(blogs)
     return (
         <section className='blogList'>
             {blogs?.map(blog => (
@@ -50,6 +56,11 @@ export const BlogList = () => {
                 </article>
             ))}
 
+            <Pagination
+                page={page}
+                pageSize={pageSize}
+                onPageChange={setPage}
+            />
 
         </section>
     )

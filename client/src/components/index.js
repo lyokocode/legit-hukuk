@@ -4,6 +4,8 @@ export { Hero } from "./Hero"
 
 export { BlogList } from "./BlogList"
 
+export { Pagination } from "./Pagination"
+
 export { CategoryList } from "./CategoryList"
 
 export { Menu } from "./Menu"
