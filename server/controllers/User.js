@@ -6,7 +6,10 @@ import { storageClient } from "../database/supabase.js"
 
 export const getAllUser = async (req, res, next) => {
     try {
+        const selectedFields = req.query.fields ? req.query.fields.split(',') : null;
+        console.log(selectedFields)
         const users = await User.findAll({
+            attributes: selectedFields,
             include: [
                 Blog,
                 Category
@@ -22,10 +25,13 @@ export const getAllUser = async (req, res, next) => {
 // GET USER
 export const getUser = async (req, res, next) => {
     const { slug } = req.query;
+    const selectedFields = req.query.fields ? req.query.fields.split(',') : null;
+    console.log(selectedFields)
 
     try {
         const user = await User.findOne({
             where: { slug },
+            attributes: selectedFields,
             include: [
                 Blog,
                 Category

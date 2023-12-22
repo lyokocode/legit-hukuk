@@ -7,7 +7,7 @@ export const SingleService = () => {
 
     const { slug } = useParams()
     const { data: category, loading, error } = useFetch(
-        `${import.meta.env.VITE_REACT_BASE_URL}/api/categories/category?slug=${slug}`
+        `${import.meta.env.VITE_REACT_BASE_URL}/api/categories/category?slug=${slug}&fields=title,icon,image,file`
     );
 
     if (loading) {

@@ -5,13 +5,17 @@ import { storageClient } from "../database/supabase.js"
 // GET ALL CATEGORIES
 export const getAllCategories = async (req, res, next) => {
     try {
-        const categories = await Category.findAll();
-        res.status(200).json(categories);
+        const selectedFields = req.query.fields ? req.query.fields.split(',') : null;
+        console.log(selectedFields)
+        const categories = await Category.findAll({
+            attributes: selectedFields,
+        });
 
+        res.status(200).json(categories);
     } catch (err) {
-        next(err)
+        next(err);
     }
-}
+};
 
 // GET CATEGORY
 export const getCategory = async (req, res, next) => {

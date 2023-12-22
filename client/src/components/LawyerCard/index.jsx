@@ -29,7 +29,7 @@ export const LawyerCard = ({ lawyer }) => {
                             </div>
                             <div className="teamTitle">
                                 <h2>Yabancı dil</h2>
-                                <h3>ingilizce, fransızca</h3>
+                                <h3>{lawyer.languages}</h3>
                             </div>
                             <div className="teamTitle">
                                 <h2>e-posta</h2>
@@ -63,5 +63,7 @@ LawyerCard.propTypes = {
         activeAreas: PropTypes.string,
         email: PropTypes.string,
         linkedin: PropTypes.string,
+        languages: PropTypes.string,
+
     }),
 };

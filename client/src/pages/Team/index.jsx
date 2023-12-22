@@ -4,14 +4,12 @@ import { FaLinkedin, FaTwitter } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import useFetch from "@/hooks/useFetch";
 import { Helmet } from "react-helmet";
-
-
 import "./team.scss"
 
 export const Team = () => {
 
     const { data: lawyers, loading, error } = useFetch(
-        `${import.meta.env.VITE_REACT_BASE_URL}/api/users`
+        `${import.meta.env.VITE_REACT_BASE_URL}/api/users?fields=id,fullName,slug,position,detail,twitter,linkedin,email,avatar`
     );
 
     return (

@@ -5,7 +5,7 @@ import useFetch from "@/hooks/useFetch";
 export const WorkList = () => {
 
     const { data: categories, loading, error } = useFetch(
-        `${import.meta.env.VITE_REACT_BASE_URL}/api/categories`
+        `${import.meta.env.VITE_REACT_BASE_URL}/api/categories?fields=id,title,slug,icon,image,description`
     );
     if (loading) {
         return "loading"

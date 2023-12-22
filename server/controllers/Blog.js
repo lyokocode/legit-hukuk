@@ -7,7 +7,6 @@ import { Category } from "../models/Category.js";
 // GET ALL BLOGS
 export const getAllBlogs = async (req, res, next) => {
     const { categoryId, page, pageSize } = req.query
-    console.log(page ? page : "page sayısı bulunamadı")
     const offset = (page - 1) * pageSize;
 
     try {

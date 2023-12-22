@@ -6,7 +6,7 @@ export const WorkCard = ({ category }) => {
 
     return (
         <>
-            {category && category.file && category.icon ? (
+            {category && category.icon ? (
                 <article className="workCard">
                     <div className="workInfo">
                         {

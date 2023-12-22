@@ -4,9 +4,8 @@ import useFetch from "@/hooks/useFetch"
 import { Link } from "react-router-dom"
 export const Footer = () => {
     const { data: categories, loading, error } = useFetch(
-        `${import.meta.env.VITE_REACT_BASE_URL}/api/categories`
+        `${import.meta.env.VITE_REACT_BASE_URL}/api/categories?fields=id,slug,title`
     );
-
 
     return (
         <footer className="footer">

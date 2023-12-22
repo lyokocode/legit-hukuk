@@ -2,16 +2,14 @@ import { useParams } from "react-router-dom"
 import { Hero, LawyerCard, LawyerAbout } from "@/components"
 import useFetch from "@/hooks/useFetch"
 import { Helmet } from "react-helmet";
-
-
 import "./lawyer.scss"
 
 export const SingleLawyer = () => {
     const { slug } = useParams()
     const { data: lawyer, loading, error } = useFetch(
-        `${import.meta.env.VITE_REACT_BASE_URL}/api/users/user?slug=${slug}`
+        `${import.meta.env.VITE_REACT_BASE_URL}/api/users/user?slug=${slug}&fields=id,fullName,avatar,position,about,activeAreas,languages,email,twitter,linkedin`
     );
-
+    console.log(lawyer)
     return (
         <section className="singleLawyer">
 
@@ -20,7 +18,6 @@ export const SingleLawyer = () => {
                 <title>{`Avukat ${lawyer?.fullName}`}</title>
                 <link rel="canonical" href="https://legithukuk.com" />
             </Helmet>
-
 
             <Hero
                 image="/hero1.png"
