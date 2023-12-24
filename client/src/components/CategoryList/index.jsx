@@ -18,7 +18,7 @@ export const CategoryList = () => {
             {
                 categories && categories.map(category => (
                     <li key={category.id}>
-                        <Link to={`/makaleler?categoryId=${category.id}`}>
+                        <Link to={`/makaleler?categoryId=${category.id}&page=1`}>
                             {category.title}
                         </Link>
                     </li>

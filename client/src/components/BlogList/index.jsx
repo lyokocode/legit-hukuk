@@ -6,14 +6,12 @@ import { Pagination, SingleBlog } from "@/components";
 export const BlogList = () => {
 
     const [searchParams] = useSearchParams();
-    let page = parseInt(searchParams.get('page')) || 1;
+    const page = parseInt(searchParams.get('page')) || 1;
     const pageSize = 1 // Sayfa başına blog sayısı
 
-
     const { data: blogs, loading, error } = useFetch(
-        `${import.meta.env.VITE_REACT_BASE_URL}/api/blogs?page=${page}&pageSize=${pageSize}`
+        `${import.meta.env.VITE_REACT_BASE_URL}/api/blogs?${searchParams.toString() == "" ? "page=1" : searchParams.toString()}&pageSize=${pageSize}`
     );
-
 
     const handlePageChange = (newPage) => {
         searchParams.set('page', newPage);

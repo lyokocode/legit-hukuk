@@ -8,11 +8,14 @@ import { Category } from "../models/Category.js";
 export const getAllBlogs = async (req, res, next) => {
     const { categoryId, page, pageSize } = req.query
     const offset = (page - 1) * pageSize;
+    const selectedFields = req.query.fields ? req.query.fields.split(',') : null;
+    console.log(selectedFields)
 
     try {
         let blogs;
         if (categoryId) {
             blogs = await Blog.findAll({
+                attributes: selectedFields,
                 where: { CategoryId: categoryId },
                 include: [
                     {
@@ -30,6 +33,7 @@ export const getAllBlogs = async (req, res, next) => {
             });
         } else {
             blogs = await Blog.findAll({
+                attributes: selectedFields,
                 include: [
                     {
                         model: User,
