@@ -23,15 +23,23 @@ export const Home = () => {
                 title="2023 | İzmir"
                 description="Legit Hukuk & Danışmanlık"
             />
-
             <div className="about">
                 <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore veniam, laborum nulla, similique possimus ducimus dolorem omnis quod quos labore amet quasi architecto cupiditate veritatis suscipit corporis eius, atque natus.
+                    LEGIT HUKUK & DANIŞMANLIK, Av. Dural BİLİR, Av. Oğuzhan KARAKAYA, Av. Ali Can YURDASEVER, Av. Egemen KARCI, Av. Canberk BİLİR, Av. Nazir Tilkioğlu ve Av. Erden Barış SARAN tarafından kurulmuş bir hukuk ve danışmanlık bürosudur.
                 </p>
 
                 <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed facilis, aliquid voluptate sequi placeat ad doloremque et veniam ipsam dolorem error provident delectus excepturi, doloribus adipisci porro est? Ea, id!
+                    Avukatlık Bürosu, multidisipliner bir yaklaşımla departman halinde iş takibi prensibiyle faaliyet göstermekte olup, sürekli araştırma ve sorgulama odaklı bir hizmet anlayışını benimseyerek sektöründe tanınan bir marka olma hedefine yönelmektedir.
                 </p>
+
+                <p>
+                    LEGIT HUKUK & DANIŞMANLIK, ulusal ve uluslararası alanda faaliyet gösteren müvekkillerine ve danışanlarına avukatlık, arabuluculuk ve hukuki danışmanlık hizmetleri sunmaktadır. Avukatlık Bürosu  deneyimli ve dinamik kadrosuyla hukuki uyuşmazlıklar üzerine çeşitli yasal çözümler sunarak müvekkillerine destek sağlamaktadır.
+                </p>
+
+                <p>
+                    Avukatlık Bürosu, etik ilkeleri ve hukuk normlarını temel alarak danışan ve müvekkillerine sağlıklı hukuki hizmetler sunma amacındadır. Profesyonel yaklaşımını deneyimle ve dinamizmle birleştirerek, alanında uzman, seçkin partnerlerle iş birliği yaparak sektörde aranan bir marka olma yolunda ilerlemektedir.
+                </p>
+
             </div>
 
             <Card />

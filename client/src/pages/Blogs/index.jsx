@@ -14,7 +14,7 @@ export const Blogs = () => {
 
 
             <Hero
-                image="/hero2.png"
+                image="/hero5.png"
                 title="Blog"
 
             />

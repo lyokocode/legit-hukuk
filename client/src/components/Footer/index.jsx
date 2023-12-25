@@ -14,8 +14,8 @@ export const Footer = () => {
                 <div className="info">
                     <h2>Addres:</h2>
                     <h4>
-                        Esentepe Mah. Kasap Sok. Eser İş Merkezi B Blok No:18 D:63
-                        Şişli / İstanbul
+                        Donanmacı Mah. 1732. Sok. No:9 D:11
+                        Karşıyaka / İzmir
                     </h4>
                 </div>
                 <div className="info">

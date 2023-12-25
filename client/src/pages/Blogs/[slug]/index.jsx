@@ -11,13 +11,14 @@ export const SingleBlog = () => {
     if (loading) {
         return "loading"
     }
+    if (error) {
+        return "error"
+    }
 
     return (
         <>
 
             <Helmet>
-                <link rel="icon" href="/law1.png" />
-
                 <meta charSet="utf-8" />
                 <title>{`${blog?.title}`}</title>
                 <link rel="canonical" href="https://legithukuk.com" />
