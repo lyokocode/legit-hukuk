@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { navigations } from "../../mockData/Navigation";
+import { navigations } from "@/mockData/Navigation";
 import "./navbar.scss";
 import { Link } from "react-router-dom";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";

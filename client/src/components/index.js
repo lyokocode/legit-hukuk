@@ -6,6 +6,8 @@ export { BlogList } from "./BlogList"
 
 export { SingleBlog } from "./SingleBlog"
 
+export { LatestBlogs } from "./LatestBlogs"
+
 export { Pagination } from "./Pagination"
 
 export { CategoryList } from "./CategoryList"

@@ -7,7 +7,7 @@ export const BlogList = () => {
 
     const [searchParams] = useSearchParams();
     const page = parseInt(searchParams.get('page')) || 1;
-    const pageSize = 1 // Sayfa başına blog sayısı
+    const pageSize = 6
 
     const { data: blogs, loading, error } = useFetch(
         `${import.meta.env.VITE_REACT_BASE_URL}/api/blogs?${searchParams.toString() == "" ? "page=1" : searchParams.toString()}&pageSize=${pageSize}`

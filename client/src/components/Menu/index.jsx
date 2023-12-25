@@ -1,5 +1,5 @@
 import "./menu.scss"
-import { CategoryList } from '../CategoryList';
+import { CategoryList, LatestBlogs } from '@/components';
 
 export const Menu = () => {
 
@@ -12,9 +12,13 @@ export const Menu = () => {
             </div>
 
             <CategoryList />
-            <div>
-                son bloglar
+            <div className='title'>
+                <div className="hr" />
+                <h1>Son Bloglar</h1>
+                <div className="hr" />
             </div>
+
+            <LatestBlogs />
         </div>
     )
 }
