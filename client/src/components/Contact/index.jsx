@@ -1,12 +1,22 @@
 import { useEffect, useState } from "react";
 import { AiOutlineClose, AiOutlineWhatsApp } from "react-icons/ai";
-import { BsChevronDoubleRight } from "react-icons/bs"
+import { IoMdSend } from "react-icons/io";
 
 import "./contact.scss"
 
 export const Contact = () => {
     const [greeting, setGreeting] = useState("Bizi biraz bekleyin...");
     const [modal, setModal] = useState(false)
+
+    // Şu anki tarihi ve saati al
+    const now = new Date();
+
+    // Saati ve dakikayı al
+    const hour = now.getHours();
+    var minute = now.getMinutes();
+
+
+
 
     const modalToggle = () => {
         setModal(!modal)
@@ -35,29 +45,41 @@ export const Contact = () => {
                 <AiOutlineWhatsApp size={30} />
             </button>
 
-            {modal && <>
-                <article className="whatsaapModal">
-                    <div className="whatsaapHeader">
-                        <div className="left">
-                            <AiOutlineWhatsApp size={25} />
-                            <span>WhatsApp</span>
-                        </div>
-                        <div className="right">
-                            <AiOutlineClose onClick={modalToggle} size={25} />
+            {modal && (
+                <>
+                    <div className="app-widget--whatsapp-modal app-widget--whatsapp-position-right">
+                        <button className="closeBtn" onClick={() => setModal(false)}>
+                            <AiOutlineClose />
+                        </button>
+                        <div className="app-widget--whatsapp-modal-content app-widget--whatsapp-modal-content-position-right">
+                            <div className="app-widget--whatsapp-modal-message">
+                                <div className="app-widget--whatsapp-message">
+                                    <div className="app-widget--whatsapp-message-bubble">
+                                        <div className="app-widget--whatsapp-message-txt">
+                                            <span className="app-widget--whatsapp-message-name">Legit Hukuk </span>
+                                            <span className="app-widget--whatsapp-message-timestamp">{hour + ':' + (minute < 10 ? '0' : '') + minute}</span>
+                                            <span className="app-widget--whatsapp-message-content">
+                                                Merhaba, sizlere nasıl yardımcı olabiliriz?
+                                            </span>
+                                        </div>
+                                        <div className="app-widget--whatsapp-message-bubble-arrow"></div>
+                                    </div>
+                                </div>
+                                <div className="app-widget--whatsapp-send">
+                                    <div className="app-widget--whatsapp-send-input">
+                                        <input type="text" />
+                                    </div>
+                                    <button
+                                        onClick={() => handleCreateOrder()}
+                                        className="app-widget--whatsapp-send-btn">
+                                        <IoMdSend />
+                                    </button>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div className="chatBox">
-
-                        <div className="content">
-                            <div className="message">Merhaba, size nasıl yardımcı olabiliriz?</div>
-                        </div>
-                    </div>
-                    <button onClick={handleCreateOrder} className="sendMessage" aria-label="WhatsApp send message">
-                        <span onClick={() => setWhatsappModal(true)}>Randevu  Oluştur</span>
-                        <BsChevronDoubleRight name="whatsApp" />
-                    </button>
-                </article>
-            </>}
+                </>
+            )}
         </div>
     )
 }

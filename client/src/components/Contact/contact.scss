@@ -123,19 +123,225 @@
     }
 }
 
-.kvkk {
+.closeBtn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: 25px;
+    height: 25px;
+
+    svg {
+        color: gray;
+        width: 100%;
+        height: 100%;
+    }
+}
+
+
+.app-widget--whatsapp-btn {
     position: fixed;
+    width: 50px;
+    height: 50px;
+    bottom: 15px;
+    z-index: 20;
+    box-sizing: border-box;
+}
+
+.app-widget--whatsapp-btn *,
+.app-widget--whatsapp-modal * {
+    box-sizing: border-box;
+}
+
+.app-widget--whatsapp-btn svg {
     width: 100%;
     height: 100%;
-    top: 0;
-    right: 0;
-    // transform: translate(-20%, 20%);
-    background-color: rgba($color: #71717a, $alpha: 0.8);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+}
 
-    h1 {
-        opacity: 1;
+.app-widget--whatsapp-position-left {
+    left: 15px;
+}
+
+.app-widget--whatsapp-position-right {
+    right: 30px;
+}
+
+.app-widget--whatsapp-modal {
+    position: fixed;
+    bottom: 80px;
+    z-index: 25;
+
+    .app-widget--whatsapp-modal-content {
+        background: url("https://cloud.githubusercontent.com/assets/398893/15136779/4e765036-1639-11e6-9201-67e728e86f39.jpg") #efe7dd repeat;
+        width: 250px;
+        height: 300px;
+        border-radius: 5px;
+        padding: 5px;
+        box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+
+        &.app-widget--whatsapp-modal-content-position-right {
+            &:after {
+                content: '';
+                position: absolute;
+                top: 100%;
+                right: 20px;
+                width: 0;
+                height: 0;
+                border-top: solid 10px #b9bbc0;
+                border-left: solid 10px transparent;
+                border-right: solid 10px transparent;
+            }
+        }
+
+        &.app-widget--whatsapp-modal-content-position-left {
+            &:after {
+                content: '';
+                position: absolute;
+                top: 100%;
+                left: 20px;
+                width: 0;
+                height: 0;
+                border-top: solid 10px #b9bbc0;
+                border-left: solid 10px transparent;
+                border-right: solid 10px transparent;
+            }
+        }
+    }
+
+    .app-widget--whatsapp-modal-message {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 100%;
+    }
+
+    .app-widget--whatsapp-message {
+        width: 100%;
+        height: auto;
+        display: block;
+        overflow: hidden;
+
+        .app-widget--whatsapp-message-bubble {
+            background-color: #fff;
+            max-width: 75%;
+            width: auto;
+            height: auto;
+            display: block;
+            border-radius: 5px;
+            position: relative;
+            margin: 10px 0 3px 25px;
+            box-shadow: 0px 2px 1px rgba(0, 0, 0, 0.2);
+
+            .app-widget--whatsapp-message-txt {
+                padding: 8px 0 8px 0;
+                width: 100%;
+
+                .app-widget--whatsapp-message-name {
+                    font-weight: 600;
+                    font-size: 14px;
+                    display: inline-table;
+                    padding: 0 0 0 15px;
+                    margin: 0 0 4px 0;
+                    color: #3498db;
+
+                    span {
+                        font-weight: normal;
+                        color: #b3b3b3;
+                        overflow: hidden;
+                    }
+                }
+
+                .app-widget--whatsapp-message-content {
+                    font-size: 14px;
+                    font-weight: 500;
+                    padding: 0 15px 0 15px;
+                    margin: auto;
+                    color: #2b2b2b;
+                    display: table;
+                }
+
+                .app-widget--whatsapp-message-timestamp {
+                    font-size: 11px;
+                    margin: auto;
+                    padding: 0 15px 0 0;
+                    display: table;
+                    float: right;
+                    position: relative;
+                    text-transform: uppercase;
+                    color: #999;
+                }
+            }
+
+            .app-widget--whatsapp-message-bubble-arrow {
+                position: absolute;
+                float: left;
+                left: -11px;
+                top: 0px;
+            }
+
+            .app-widget--whatsapp-message-bubble-arrow:after {
+                content: "";
+                position: absolute;
+                border-top: 15px solid #fff;
+                border-left: 15px solid transparent;
+                border-radius: 4px 0 0 0px;
+                width: 0;
+                height: 0;
+            }
+        }
+    }
+
+    .app-widget--whatsapp-send {
+        display: flex;
+
+        &-input {
+            display: flex;
+            background-color: #fff;
+            position: relative;
+            width: 100%;
+            height: 100%;
+            border-radius: 3px 0 3px 3px;
+
+            &:after {
+                border-width: 0px 0 10px 10px;
+                border-color: transparent transparent transparent #fff;
+                border-style: solid;
+                position: absolute;
+                width: 0;
+                height: 0;
+                content: "";
+                top: 0;
+                right: -10px;
+            }
+
+            & input {
+                width: 100%;
+                height: 100%;
+                background: transparent;
+                outline: none;
+                border: none;
+                padding: 5px 5px 5px 5px;
+            }
+        }
+
+        &-btn {
+            margin-left: 5px;
+            background: #008a7c;
+            border-radius: 50%;
+            color: #fff;
+            position: relative;
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+
+            svg {
+                width: 30px;
+                margin-right: -5px;
+                height: auto;
+                fill: #fff;
+            }
+        }
     }
 }
