@@ -2,7 +2,7 @@ import "./blogList.scss";
 import { useSearchParams } from "react-router-dom";
 import useFetch from "@/hooks/useFetch";
 import { Pagination, SingleBlog } from "@/components";
-""
+
 export const BlogList = () => {
 
     const [searchParams] = useSearchParams();
