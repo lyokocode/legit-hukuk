@@ -18,7 +18,7 @@
 
 .confirmation {
     font-size: 14px;
-    background-color: rgba($color: gray, $alpha: 0.8);
+    background-color: rgba($color: black, $alpha: 0.9);
     left: 0;
     position: fixed;
     top: 0;
@@ -28,6 +28,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    color: white;
 
     .confirmation-box {
 
@@ -38,13 +39,19 @@
 
         }
 
+
         p {
             font-size: 18px;
 
             span {
                 color: blue;
                 text-decoration: underline;
+                cursor: pointer;
             }
+        }
+
+        button {
+            color: white;
         }
 
     }

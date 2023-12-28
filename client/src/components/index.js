@@ -34,6 +34,8 @@ export { Footer } from "./Footer"
 
 export { Contact } from "./Contact"
 
+export { Kvkk } from "./Kvkk"
+
 export { ContactLink } from "./ContactLink"
 
 export { Map } from "./Map"

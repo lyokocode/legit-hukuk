@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { AiOutlineClose, AiOutlineWhatsApp } from "react-icons/ai";
 import { IoMdSend } from "react-icons/io";
-
+import { Kvkk } from "@/components"
 import "./contact.scss"
 
 export const Contact = () => {
@@ -9,6 +9,7 @@ export const Contact = () => {
 
     const [confirmation, setConfirmation] = useState(false);
     const [checked, setChecked] = useState(false);
+    const [kvkk, setKvkk] = useState(false)
 
     // Saati ve dakikayı al
     const now = new Date();
@@ -37,66 +38,70 @@ export const Contact = () => {
         }
     };
     return (
-        <div className="contact">
-            {/* <div>{greeting}</div>; */}
-            <button onClick={modalToggle} aria-label="whatsapp" className="iconContainer">
-                <AiOutlineWhatsApp size={30} />
-            </button>
+        <> {kvkk && (
+            <Kvkk setKvkk={setKvkk} />
+        )}
+            <div className="contact">
+                <button onClick={modalToggle} aria-label="whatsapp" className="iconContainer">
+                    <AiOutlineWhatsApp size={30} />
+                </button>
 
-            {modal && (
-                <>
-                    <div className="app-widget--whatsapp-modal app-widget--whatsapp-position-right">
-                        <div className="app-widget--whatsapp-modal-content app-widget--whatsapp-modal-content-position-right">
-                            <div className="app-widget--whatsapp-modal-message">
-                                <div className="app-widget--whatsapp-message">
-                                    <div className="app-widget--whatsapp-message-bubble">
-                                        <div className="app-widget--whatsapp-message-txt">
-                                            <span className="app-widget--whatsapp-message-name">Legit Hukuk </span>
-                                            <span className="app-widget--whatsapp-message-timestamp">{hour + ':' + (minute < 10 ? '0' : '') + minute}</span>
-                                            <span className="app-widget--whatsapp-message-content">
-                                                Merhaba, sizlere nasıl yardımcı olabiliriz?
-                                            </span>
+                {modal && (
+                    <>
+                        <div className="app-widget--whatsapp-modal app-widget--whatsapp-position-right">
+                            <div className="app-widget--whatsapp-modal-content app-widget--whatsapp-modal-content-position-right">
+                                <div className="app-widget--whatsapp-modal-message">
+                                    <div className="app-widget--whatsapp-message">
+                                        <div className="app-widget--whatsapp-message-bubble">
+                                            <div className="app-widget--whatsapp-message-txt">
+                                                <span className="app-widget--whatsapp-message-name">Legit Hukuk </span>
+                                                <span className="app-widget--whatsapp-message-timestamp">{hour + ':' + (minute < 10 ? '0' : '') + minute}</span>
+                                                <span className="app-widget--whatsapp-message-content">
+                                                    Merhaba, sizlere nasıl yardımcı olabiliriz?
+                                                </span>
+                                            </div>
+                                            <div className="app-widget--whatsapp-message-bubble-arrow"></div>
                                         </div>
-                                        <div className="app-widget--whatsapp-message-bubble-arrow"></div>
                                     </div>
-                                </div>
-                                <div className="app-widget--whatsapp-send">
-                                    <div className="app-widget--whatsapp-send-input">
-                                        <input type="text" />
+                                    <div className="app-widget--whatsapp-send">
+                                        <div className="app-widget--whatsapp-send-input">
+                                            <input type="text" />
+                                        </div>
+                                        <button
+                                            onClick={() => setConfirmation(true)}
+                                            className="app-widget--whatsapp-send-btn"
+                                        >
+                                            <IoMdSend />
+                                        </button>
                                     </div>
-                                    <button
-                                        onClick={() => setConfirmation(true)}
-                                        className="app-widget--whatsapp-send-btn"
+                                    <button className="closeBtn "
+                                        onClick={() => setModal(false)}
                                     >
-                                        <IoMdSend />
+                                        <AiOutlineClose size={30} />
                                     </button>
                                 </div>
-                                <button className="closeBtn "
-                                    onClick={() => setModal(false)}
-                                >
-                                    <AiOutlineClose size={30} />
-                                </button>
-                            </div>
-                            {confirmation && (
+                                {confirmation && (
 
-                                <div className="confirmation">
-                                    <div className="confirmation-box">
-                                        <p><span>KVKK aydınlatma metni'ni</span> okudum, onaylıyorum.</p>
-                                        <div className="checkContainer">
-                                            <div>
-                                                <input type="checkbox" id="confirmationCheckbox" onChange={() => setChecked(!checked)} />
-                                                <label htmlFor="confirmationCheckbox">Onaylıyorum</label>
+                                    <div className="confirmation">
+                                        <div className="confirmation-box">
+                                            <p><span onClick={() => setKvkk(true)}>KVKK aydınlatma metni'ni</span> okudum, onaylıyorum.</p>
+                                            <div className="checkContainer">
+                                                <div>
+                                                    <input type="checkbox" id="confirmationCheckbox" onChange={() => setChecked(!checked)} />
+                                                    <label htmlFor="confirmationCheckbox">Onaylıyorum</label>
+                                                </div>
+                                                <button onClick={handleContinue}>Devam Et</button>
+                                                <button onClick={() => setConfirmation(false)}>İptal</button>
                                             </div>
-                                            <button onClick={handleContinue}>Devam Et</button>
-                                            <button onClick={() => setConfirmation(false)}>İptal</button>
                                         </div>
                                     </div>
-                                </div>
-                            )}
+                                )}
+                            </div>
                         </div>
-                    </div>
-                </>
-            )}
-        </div>
+                    </>
+                )}
+
+            </div>
+        </>
     )
 }

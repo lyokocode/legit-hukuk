@@ -1,0 +1,36 @@
+.kvkk {
+    background-color: rgba($color: white, $alpha: 1.0);
+    z-index: 999999999;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 2rem;
+
+    .closeBtn {
+        right: 5%;
+    }
+
+    .title {
+        font-size: 24px;
+    }
+
+    p {
+        font-size: 14px;
+
+        a {
+            color: blue;
+        }
+    }
+
+    ol {
+        li {
+            list-style-type: lower-alpha;
+            font-size: 14px;
+            padding-left: 1rem;
+        }
+    }
+}
