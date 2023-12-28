@@ -14,114 +14,43 @@
         color: #fff;
         position: relative;
     }
-
-    .whatsaapModal {
-        display: flex;
-        flex-direction: column;
-        position: absolute;
-        bottom: 2%;
-        right: 3%;
-        width: 80%;
-        min-width: 350px;
-        max-width: 450px;
-        height: 30vh;
-        border-radius: 12px;
-        text-align: left;
-        overflow: hidden;
-        background-color: #f0fdf4;
-
-
-
-        .whatsaapHeader {
-            display: flex;
-            background-color: rgb(7, 150, 0);
-            flex-flow: row;
-            align-items: center;
-            justify-content: space-between;
-            flex-shrink: 0;
-            height: 50px;
-            padding: 0 10px;
-
-            .left {
-                display: flex;
-                align-items: center;
-                gap: 5px;
-
-                svg {
-                    color: white;
-                }
-
-                span {
-                    font-size: 18px;
-                    color: white;
-                }
-            }
-
-            .right {
-                width: 30px;
-                height: 30px;
-                background-color: #94a3b8;
-                border-radius: 50%;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                cursor: pointer;
-
-                svg {
-                    color: #e2e8f0;
-                }
-            }
-
-        }
-
-        .chatBox {
-            .content {
-                padding: 20px;
-                position: relative;
-
-                .message {
-
-
-                    &::before {
-                        content: "";
-                        position: absolute;
-                        bottom: 0px;
-                        left: -12px;
-                        border-width: 10px;
-                        border-style: solid;
-                        border-color: transparent transparent #fff transparent;
-                        transform: rotate(236deg);
-                    }
-
-                    min-height: 60px;
-                    position: relative;
-                    padding: 18px 20px;
-                    border-radius: 32px;
-                    background-color: #fff;
-                    color: #4a4a4a;
-                    word-break: break-word;
-                    transform: translateZ(0);
-                    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, .3));
-                }
-            }
-        }
-
-        .sendMessage {
-            padding: 20px;
-            border-radius: 20px;
-            background-color: #25d366;
-            font-weight: 500;
-            line-height: 28px;
-            white-space: nowrap;
-            text-overflow: ellipsis;
-            margin-left: auto;
-            display: flex;
-            align-items: center;
-            color: #e2e8f0;
-
-        }
-    }
 }
+
+.confirmation {
+    font-size: 14px;
+    background-color: rgba($color: gray, $alpha: 0.8);
+    left: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .confirmation-box {
+
+        .checkContainer {
+            display: flex;
+            gap: 2rem;
+            margin-top: 2rem;
+
+        }
+
+        p {
+            font-size: 18px;
+
+            span {
+                color: blue;
+                text-decoration: underline;
+            }
+        }
+
+    }
+
+}
+
 
 .closeBtn {
     position: absolute;
@@ -344,4 +273,146 @@
             }
         }
     }
+}
+
+@supports(-webkit-appearance: none) or (-moz-appearance: none) {
+
+    input[type='checkbox'] {
+        --active: #275EFE;
+        --active-inner: #fff;
+        --focus: 2px rgba(39, 94, 254, .3);
+        --border: #BBC1E1;
+        --border-hover: #275EFE;
+        --background: #fff;
+        --disabled: #F6F8FF;
+        --disabled-inner: #E1E6F9;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        height: 21px;
+        outline: none;
+        display: inline-block;
+        vertical-align: top;
+        position: relative;
+        margin: 0;
+        cursor: pointer;
+        border: 1px solid var(--bc, var(--border));
+        background: var(--b, var(--background));
+        transition: background .3s, border-color .3s, box-shadow .2s;
+
+        &:after {
+            content: '';
+            display: block;
+            left: 0;
+            top: 0;
+            position: absolute;
+            transition: transform var(--d-t, .3s) var(--d-t-e, ease), opacity var(--d-o, .2s);
+        }
+
+        &:checked {
+            --b: var(--active);
+            --bc: var(--active);
+            --d-o: .3s;
+            --d-t: .6s;
+            --d-t-e: cubic-bezier(.2, .85, .32, 1.2);
+        }
+
+        &:disabled {
+            --b: var(--disabled);
+            cursor: not-allowed;
+            opacity: .9;
+
+            &:checked {
+                --b: var(--disabled-inner);
+                --bc: var(--border);
+            }
+
+            &+label {
+                cursor: not-allowed;
+            }
+        }
+
+        &:hover {
+            &:not(:checked) {
+                &:not(:disabled) {
+                    --bc: var(--border-hover);
+                }
+            }
+        }
+
+        &:focus {
+            box-shadow: 0 0 0 var(--focus);
+        }
+
+        &:not(.switch) {
+            width: 21px;
+
+            &:after {
+                opacity: var(--o, 0);
+            }
+
+            &:checked {
+                --o: 1;
+            }
+        }
+
+        &+label {
+            font-size: 14px;
+            line-height: 21px;
+            display: inline-block;
+            vertical-align: top;
+            cursor: pointer;
+            margin-left: 4px;
+        }
+    }
+
+    input[type='checkbox'] {
+        &:not(.switch) {
+            border-radius: 7px;
+
+            &:after {
+                width: 5px;
+                height: 9px;
+                border: 2px solid var(--active-inner);
+                border-top: 0;
+                border-left: 0;
+                left: 7px;
+                top: 4px;
+                transform: rotate(var(--r, 20deg));
+            }
+
+            &:checked {
+                --r: 43deg;
+            }
+        }
+
+        &.switch {
+            width: 38px;
+            border-radius: 11px;
+
+            &:after {
+                left: 2px;
+                top: 2px;
+                border-radius: 50%;
+                width: 15px;
+                height: 15px;
+                background: var(--ab, var(--border));
+                transform: translateX(var(--x, 0));
+            }
+
+            &:checked {
+                --ab: var(--active-inner);
+                --x: 17px;
+            }
+
+            &:disabled {
+                &:not(:checked) {
+                    &:after {
+                        opacity: .6;
+                    }
+                }
+            }
+        }
+    }
+
+
 }

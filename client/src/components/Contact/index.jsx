@@ -5,18 +5,15 @@ import { IoMdSend } from "react-icons/io";
 import "./contact.scss"
 
 export const Contact = () => {
-    const [greeting, setGreeting] = useState("Bizi biraz bekleyin...");
     const [modal, setModal] = useState(false)
 
-    // Şu anki tarihi ve saati al
-    const now = new Date();
+    const [confirmation, setConfirmation] = useState(false);
+    const [checked, setChecked] = useState(false);
 
     // Saati ve dakikayı al
+    const now = new Date();
     const hour = now.getHours();
     var minute = now.getMinutes();
-
-
-
 
     const modalToggle = () => {
         setModal(!modal)
@@ -31,13 +28,14 @@ export const Contact = () => {
 
         window.location.href = whatsappUrl;
     };
-    useEffect(() => {
-        const currentHour = new Date().getHours();
 
-        if (currentHour >= 8 && currentHour <= 17) {
-            setGreeting("Hoş geldiniz");
+    const handleContinue = () => {
+        if (checked) {
+            handleCreateOrder();
+        } else {
+            alert("Lütfen KVKK aydınlatma metnini okuyup onaylayınız.");
         }
-    }, []);
+    };
     return (
         <div className="contact">
             {/* <div>{greeting}</div>; */}
@@ -48,9 +46,6 @@ export const Contact = () => {
             {modal && (
                 <>
                     <div className="app-widget--whatsapp-modal app-widget--whatsapp-position-right">
-                        <button className="closeBtn" onClick={() => setModal(false)}>
-                            <AiOutlineClose />
-                        </button>
                         <div className="app-widget--whatsapp-modal-content app-widget--whatsapp-modal-content-position-right">
                             <div className="app-widget--whatsapp-modal-message">
                                 <div className="app-widget--whatsapp-message">
@@ -70,12 +65,34 @@ export const Contact = () => {
                                         <input type="text" />
                                     </div>
                                     <button
-                                        onClick={() => handleCreateOrder()}
-                                        className="app-widget--whatsapp-send-btn">
+                                        onClick={() => setConfirmation(true)}
+                                        className="app-widget--whatsapp-send-btn"
+                                    >
                                         <IoMdSend />
                                     </button>
                                 </div>
+                                <button className="closeBtn "
+                                    onClick={() => setModal(false)}
+                                >
+                                    <AiOutlineClose size={30} />
+                                </button>
                             </div>
+                            {confirmation && (
+
+                                <div className="confirmation">
+                                    <div className="confirmation-box">
+                                        <p><span>KVKK aydınlatma metni'ni</span> okudum, onaylıyorum.</p>
+                                        <div className="checkContainer">
+                                            <div>
+                                                <input type="checkbox" id="confirmationCheckbox" onChange={() => setChecked(!checked)} />
+                                                <label htmlFor="confirmationCheckbox">Onaylıyorum</label>
+                                            </div>
+                                            <button onClick={handleContinue}>Devam Et</button>
+                                            <button onClick={() => setConfirmation(false)}>İptal</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            )}
                         </div>
                     </div>
                 </>
